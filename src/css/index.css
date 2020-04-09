@@ -1,0 +1,12 @@
+*{margin:0;padding:0;text-decoration:none;list-style:none;}
+ul li{
+    height:30px;line-height:30px;padding-left:15px;
+}
+.myToast i{     
+/* 可以单独修改图标的样式 */
+    color:red;
+}
+.myToast span{
+/* 单独修改字体样式 */
+    color:greenyellow;
+}
