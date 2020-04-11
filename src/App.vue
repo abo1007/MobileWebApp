@@ -3,25 +3,30 @@
 
 		
 		<mt-header fixed title="闲得慌App"></mt-header>
-		123
+		
+		<router-view></router-view>
 
 		<nav class="mui-bar mui-bar-tab">
-			<a class="mui-tab-item mui-active" href="#tabbar">
+			<router-link class="mui-tab-item" to="/home">
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
-			</a>
-			<a class="mui-tab-item" href="#tabbar-with-chat">
-				<span class="mui-icon mui-icon-email"><span class="mui-badge">9</span></span>
-				<span class="mui-tab-label">新闻</span>
-			</a>
-			<a class="mui-tab-item" href="#tabbar-with-contact">
-				<span class="mui-icon mui-icon-contact"></span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/search">
+				<span class="mui-icon mui-icon-search">
+					<!-- <span class="mui-badge">9</span> -->
+				</span>
+				<span class="mui-tab-label">搜索</span>
+			</router-link>
+			<router-link class="mui-tab-item" to="/shopping">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+					<span class="mui-badge">0</span>
+				</span>
 				<span class="mui-tab-label">购物车</span>
-			</a>
-			<a class="mui-tab-item" href="#tabbar-with-map">
-				<span class="mui-icon mui-icon-gear"></span>
-				<span class="mui-tab-label">设置</span>
-			</a>
+			</router-link>
+			<router-link class="mui-tab-item" to="/my">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">我的</span>
+			</router-link>
 		</nav>
 
 	</div>
@@ -31,7 +36,11 @@
 
 export default {
 	name:'App',
-	
+	data(){
+		return{
+			
+		}
+	}
 }
 </script>
 
@@ -39,5 +48,8 @@ export default {
 *{margin:0;padding:0;}
 .app-container{
 	margin-top:40px;
+}
+.mui-active{
+	transition:all 0.6s ease;
 }
 </style>
