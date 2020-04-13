@@ -16,7 +16,9 @@ import './lib/MUI/css/icons-extra.css'
 
 import router from './router/router.js'
 
+import axios from 'axios'
 
+Vue.prototype.$axios = axios
 
 
 

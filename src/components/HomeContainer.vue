@@ -1,11 +1,48 @@
 <template>
     <div id="app">
 		<mt-swipe :auto="4000">
-			<mt-swipe-item>1</mt-swipe-item>
-			<mt-swipe-item>2</mt-swipe-item>
-			<mt-swipe-item>3</mt-swipe-item>
+			<mt-swipe-item v-for="item in swipeList" :key="item.url">
+				<img :src="item.img" alt="">
+			</mt-swipe-item>
 		</mt-swipe>
-		
+		<ul class="mui-table-view mui-grid-view mui-grid-9">
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-home"></span>
+					<div class="mui-media-body">最新资讯</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-search"></span>
+					<div class="mui-media-body">商品列表</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-chatbubble"></span>
+					<div class="mui-media-body">留言反馈</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-more"></span>
+					<div class="mui-media-body">视频专区</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
+					<div class="mui-media-body">资源分享</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+				<a href="#">
+					<span class="mui-icon mui-icon-phone"></span>
+					<div class="mui-media-body">联系我们</div>
+				</a>
+			</li>
+		</ul>
     </div>
 </template>
 
@@ -14,11 +51,21 @@ export default {
     name:'HomeContainer',
 	data(){
 		return{
-			
+			swipeList:[]
 		}
 	},
 	methods:{
-		
+		getSwipe() {
+			this.$axios.get('http://127.0.0.1:3008/api/getswipe').then(result => {
+				console.log(result)
+				this.swipeList = result.data
+			}).catch(err => {
+				console.log(err)
+			})
+		}
+	},
+	created(){
+		this.getSwipe();
 	}
 }
 </script>
@@ -26,20 +73,27 @@ export default {
 <style lang="scss" scoped>
 .mint-swipe{
 	height:200px;
-	
-	// .mint-swipe-item:nth-child(1) {
-	// 	background-color:#0062CC;
-	// }
-	.mint-swipe-item {
-		&:nth-child(1) {
-			background-color:#0062CC;
-		}
-		&:nth-child(2) {
-			background-color:#6641E2;
-		}
-		&:nth-child(3) {
-			background-color:#F0AD4E;
-		}
+
+	img{
+		width:100%;
+		height:100%;
 	}
+	.mint-swipe-item {
+		// &:nth-child(1) {
+		// 	background-color:#0062CC;
+		// }
+		// &:nth-child(2) {
+		// 	background-color:#6641E2;
+		// }
+		// &:nth-child(3) {
+		// 	background-color:#F0AD4E;
+		// }
+	}
+}
+.mui-grid-view.mui-grid-9{
+	background:#ffffff;
+}
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+	font-size:12px;
 }
 </style>
