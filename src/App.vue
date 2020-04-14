@@ -1,10 +1,12 @@
 <template>
 	<div class="app-container">
 
-		
+
 		<mt-header fixed title="闲得慌App"></mt-header>
-		
-		<router-view></router-view>
+
+		<transition>
+			<router-view></router-view>
+		</transition>
 
 		<nav class="mui-bar mui-bar-tab">
 			<router-link class="mui-tab-item" to="/home">
@@ -38,18 +40,32 @@ export default {
 	name:'App',
 	data(){
 		return{
-			
+
 		}
 	}
 }
 </script>
 
 <style scoped>
-*{margin:0;padding:0;}
-.app-container{
-	margin-top:40px;
-}
-.mui-active{
+	*{margin:0;padding:0;}
+	.app-container{
+		margin-top:40px;
+		overflow-x:hidden;
+	}
+	.mui-active{
 	transition:all 0.6s ease;
-}
+	}
+	.v-enter{
+		opacity: 0;
+		transform: translateX(100%);
+	}
+	.v-leave-to{
+		opacity: 0;
+		transform: translateX(-100%);
+		position:absolute;
+	}
+	.v-enter-active, .v-leave-active{
+		transition:all 0.5s ease;
+	}
+
 </style>
