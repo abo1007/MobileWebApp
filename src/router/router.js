@@ -5,6 +5,7 @@ import SearchContainer from '../components/SearchContainer.vue'
 import ShopCarContainer from '../components/ShopCarContainer.vue'
 import MyContainer from '../components/MyContainer.vue'
 
+import NewsList from "../components/news/NewsList.vue";
 
 
 var router = new vueRouter({
@@ -13,7 +14,9 @@ var router = new vueRouter({
 		{path: '/home',component: HomeContainer},
 		{path: '/search',component: SearchContainer},
 		{path: '/shopping',component: ShopCarContainer},
-		{path: '/my',component: MyContainer}
+		{path: '/my',component: MyContainer},
+		{path: '/home/newslist',component: NewsList }
+
 	],
 	linkActiveClass:' mui-active'	// 覆盖默认的路由高亮类 默认的类叫 router-link-active
 })
