@@ -22,16 +22,19 @@
         name: "NewsList",
         data(){
             return{
-                newsList:[],
-                newsStatus:null
+                newsList:[]
             }
         },
         methods:{
             getNewsList() {
                 this.$axios.get('http://127.0.0.1:3008/api/getnewslist').then(result => {
                     console.log(result);
-                    this.newsList = result.data.message
-                    this.newsStatus = result.data.status
+                    if(result.data.status === 0) {
+                        this.newsList = result.data.message
+                    } else {
+                        Toast ('系统维护中!')
+                    }
+
                 }).catch(function (err) {
                     console.log(err.message)
                 })
