@@ -1,15 +1,63 @@
 <template>
     <div id="app">
-        <h3>新闻</h3>
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-media" v-for="item in newsList" :key="item.id" >
+                <a href="javascript:;">
+                    <img class="mui-media-object mui-pull-left" :src="item.imgUrl">
+                    <div class="mui-media-body">
+                        <p class="mui-table-body-p1">{{item.title}}</p>
+                        <p class='mui-ellipsis'>
+                            <span>发表时间: {{item.addtime}}</span>
+                            <span>点击 {{item.click}} 次</span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
     </div>
 </template>
 
 <script>
     export default {
-        name: "NewsList"
+        name: "NewsList",
+        data(){
+            return{
+                newsList:[],
+                newsStatus:null
+            }
+        },
+        methods:{
+            getNewsList() {
+                this.$axios.get('http://127.0.0.1:3008/api/getnewslist').then(result => {
+                    console.log(result);
+                    this.newsList = result.data.message
+                    this.newsStatus = result.data.status
+                }).catch(function (err) {
+                    console.log(err.message)
+                })
+            }
+        },
+        created() {
+            this.getNewsList();
+        }
     }
 </script>
 
 <style lang="scss" scoped>
+    .mui-media-body{
+
+        .mui-table-body-p1{
+            font-size:16px;color:#000000;font-weight:600;
+
+        }
+        .mui-ellipsis{
+            font-size:13px;
+            display:flex;
+            justify-content: space-between;
+            span{
+                color:#228B22;
+            }
+        }
+    }
 
 </style>

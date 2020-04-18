@@ -5,7 +5,7 @@ import SearchContainer from '../components/SearchContainer.vue'
 import ShopCarContainer from '../components/ShopCarContainer.vue'
 import MyContainer from '../components/MyContainer.vue'
 
-import NewsList from "../components/news/NewsList.vue";
+import NewsList from "../components/news/NewsList.vue"
 
 
 var router = new vueRouter({

@@ -7,6 +7,8 @@
 * MUI
 * MintUI
 
+## 流程
+
 ### 首页app组件
 1. 完成 Header 区域，使用 Mint-UI 中的 Header 组件
 2. 制作 Tabbar 区域，使用的是 MUI 的 Tabbar.html
@@ -29,7 +31,12 @@
 
 ### 改造 九宫格区域 的样式
 
+### 改造 新闻资讯 路由链接
 
+## 新闻资讯 页面 制作
+1. 绘制界面，使用Mui的media-list
+2. 获取数据
+3. 渲染真实数据
 
 ## 代码托管
 
