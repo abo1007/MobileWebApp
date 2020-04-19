@@ -50,6 +50,7 @@ export default {
 	*{margin:0;padding:0;}
 	.app-container{
 		margin-top:40px;
+		margin-bottom:50px;
 		overflow-x:hidden;
 	}
 	.mui-active{

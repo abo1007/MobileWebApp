@@ -9,37 +9,37 @@
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<router-link to="/home/newslist">
 					<span class="mui-icon mui-icon-home"></span>
-					<div class="mui-media-body">最新资讯</div>
+					<div class="mui-media-body">最老资讯</div>
 				</router-link>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<router-link to="">
 					<span class="mui-icon mui-icon-search"></span>
-					<div class="mui-media-body">商品列表</div>
+					<div class="mui-media-body">闲得精选</div>
 				</router-link>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<a href="#">
 					<span class="mui-icon mui-icon-chatbubble"></span>
-					<div class="mui-media-body">留言反馈</div>
+					<div class="mui-media-body">无聊留言</div>
 				</a>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<a href="#">
 					<span class="mui-icon mui-icon-more"></span>
-					<div class="mui-media-body">视频专区</div>
+					<div class="mui-media-body">没劲视频</div>
 				</a>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<a href="#">
 					<span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
-					<div class="mui-media-body">资源分享</div>
+					<div class="mui-media-body">盗版资源</div>
 				</a>
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<a href="#">
 					<span class="mui-icon mui-icon-phone"></span>
-					<div class="mui-media-body">联系我们</div>
+					<div class="mui-media-body">没事联系我们</div>
 				</a>
 			</li>
 		</ul>
@@ -57,7 +57,7 @@ export default {
 	methods:{
 		getSwipe() {
 			this.$axios.get('http://127.0.0.1:3008/api/getswipe').then(result => {
-				console.log(result)
+				// console.log(result)
 				this.swipeList = result.data
 			}).catch(err => {
 				console.log(err)

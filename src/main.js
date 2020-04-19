@@ -4,6 +4,12 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
+import moment from "moment";
+
+Vue.filter('dateFormat', function(dataStr,pattern = "YYYY-MM-DD HH:mm:ss"){
+	return moment(dataStr).format(pattern)
+});
+
 import app from './App.vue'
 
 import { Header, Swipe, SwipeItem } from 'mint-ui'
@@ -18,7 +24,7 @@ import router from './router/router.js'
 
 import axios from 'axios'
 
-Vue.prototype.$axios = axios
+Vue.prototype.$axios = axios;
 
 
 
@@ -26,4 +32,4 @@ var vm = new Vue({
 	el:'#app',
 	render:c => c(app),
 	router
-})
+});

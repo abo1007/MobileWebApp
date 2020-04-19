@@ -2,16 +2,16 @@
     <div id="app">
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="item in newsList" :key="item.id" >
-                <a href="javascript:;">
+                <router-link :to="'/home/newsinfo/'+ item.id">
                     <img class="mui-media-object mui-pull-left" :src="item.imgUrl">
                     <div class="mui-media-body">
                         <p class="mui-table-body-p1">{{item.title}}</p>
                         <p class='mui-ellipsis'>
-                            <span>发表时间: {{item.addtime}}</span>
+                            <span>发表时间: {{item.addtime | dateFormat() }}</span>
                             <span>点击 {{item.click}} 次</span>
                         </p>
                     </div>
-                </a>
+                </router-link>
             </li>
         </ul>
     </div>
@@ -28,7 +28,7 @@
         methods:{
             getNewsList() {
                 this.$axios.get('http://127.0.0.1:3008/api/getnewslist').then(result => {
-                    console.log(result);
+                    // console.log(result);
                     if(result.data.status === 0) {
                         this.newsList = result.data.message
                     } else {
