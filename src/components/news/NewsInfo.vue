@@ -1,7 +1,7 @@
 <template>
     <div id="app-newsinfo">
         <div class="header">
-            <h3>{{ newsinfo.title }}</h3>
+            <h4>{{ newsinfo.title }}</h4>
             <p>
                 <span class="newsaddtime">添加时间 : {{ newsinfo.addtime | dateFormat }}</span>
                 <span class="click">点击次数 {{newsinfo.click}} 次</span>
@@ -12,10 +12,13 @@
                 {{ newsinfo.zhaiyao }}
             </p>
         </div>
+        <comment-box :id="this.id"></comment-box>
     </div>
 </template>
 
 <script>
+    import comment from "../subcomponents/comment.vue";
+    import { Toast } from 'mint-ui';
     export default {
         name: "NewsInfo",
         data(){
@@ -26,17 +29,15 @@
         },
         methods:{
             getNewsInfo() {
-                // this.$axios.get('http://127.0.0.1:3008/api/getnewsinfo'+ this.id).then(result => {
-                //     if(result.data.status == 0){
-                //         this.newsinfo = result.data.message
-                //     }
-                // }).catch(function (err) {
-                //     console.log(err);
-                // })
-                this.$axios.get('http://127.0.0.1:3008/api/getnewslist').then(result => {
-                    console.log(result)
-                    if(result.data.status == 0){
-                        this.newsinfo = result.data.message[0]
+                this.$axios.get('http://127.0.0.1:3008/api/getnewsinfo?newsid='+ this.id).then(result => {
+                    // console.log(result)
+                    if(result.data.status === 0){
+                        this.newsinfo = result.data.message
+                    }else{
+                        Toast ({
+                            message:'页面消失了...去看看其他页面吧',
+                            duration: 5000
+                        })
                     }
                 }).catch(function (err) {
                     console.log(err);
@@ -45,6 +46,9 @@
         },
         created() {
             this.getNewsInfo();
+        },
+        components:{
+            "comment-box" : comment
         }
     }
 </script>
@@ -52,20 +56,23 @@
 <style lang="scss" scoped>
 #app-newsinfo{
     padding:0 4px;
+    *{margin:0;}
     .header{
         border-bottom:1px solid #4d4d4d;
-        h3{
-            text-align: center;
+        padding-top:10px;
+        h4{
+            text-align:left;line-height:20px;margin-bottom:15px;font-weight:500;
         }
         p{
-            font-size:14px;
+            font-size:12px;
             display:flex;
             justify-content:space-between;
+            margin:0;
         }
     }
     .content{
         p{
-            color:#000000;
+            margin-top:10px;color:#000000;text-indent:2em;
         }
 
     }

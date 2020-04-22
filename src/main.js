@@ -12,10 +12,11 @@ Vue.filter('dateFormat', function(dataStr,pattern = "YYYY-MM-DD HH:mm:ss"){
 
 import app from './App.vue'
 
-import { Header, Swipe, SwipeItem } from 'mint-ui'
+import { Header, Swipe, SwipeItem, Button} from 'mint-ui'
 Vue.component(Header.name,Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 
 import './lib/MUI/css/mui.min.css'
 import './lib/MUI/css/icons-extra.css'
@@ -26,7 +27,13 @@ import axios from 'axios'
 
 Vue.prototype.$axios = axios;
 
-
+router.beforeEach((to, from, next) => {
+	/* 路由发生变化修改页面title */
+	if (to.meta.title) {
+		document.title = to.meta.title
+	}
+	next()
+});
 
 var vm = new Vue({
 	el:'#app',

@@ -10,13 +10,13 @@ import NewsInfo from "../components/news/NewsInfo.vue";
 
 var router = new vueRouter({
 	routes: [
-		{path: '/', redirect: '/home'},
-		{path: '/home',component: HomeContainer},
-		{path: '/search',component: SearchContainer},
-		{path: '/shopping',component: ShopCarContainer},
-		{path: '/my',component: MyContainer},
-		{path: '/home/newslist',component: NewsList },
-		{path: '/home/newsinfo/:id',component: NewsInfo }
+		{path: '/', redirect: '/home', meta: {title: '闲得慌App'}},
+		{path: '/home',component: HomeContainer,meta: {title: '闲得慌App-首页'}},
+		{path: '/search',component: SearchContainer,meta: {title: '闲得慌App-搜索'}},
+		{path: '/shopping',component: ShopCarContainer, meta: {title: '闲得慌App-购物车'}},
+		{path: '/my',component: MyContainer, meta: {title: '闲得慌App-我的'}},
+		{path: '/home/newslist',component: NewsList , meta: {title: '新闻列表'}},
+		{path: '/home/newsinfo/:id',component: NewsInfo , meta: {title: '新闻详细'}}
 
 
 	],
