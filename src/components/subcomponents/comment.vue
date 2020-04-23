@@ -4,8 +4,8 @@
             <h4>发表评论</h4>
         </div>
         <div class="comment-form">
-            <textarea placeholder="请输入评论内容" cols="20" rows="6"/>
-            <mt-button type="primary" size="large">点击评论</mt-button>
+            <textarea placeholder="请输入评论内容" cols="20" rows="6" v-model="comMsg"/>
+            <mt-button type="primary" size="large" @click="postComments">点击评论</mt-button>
         </div>
         <div class="comment-content">
             <div class="content-list" v-for="item in commentsData" :key="item.id">
@@ -30,7 +30,8 @@
         data(){
             return{
                 pageIndex:1,
-                commentsData:[]
+                commentsData:[],
+                comMsg:''
             }
         },
         methods:{
@@ -54,6 +55,34 @@
             getMore(){
                 this.pageIndex++;
                 this.getCommentsData();
+            },
+            postComments(){
+                // 校验 comMsg 内容
+                if(this.comMsg.trim().length === 0){
+                    return Toast("评论内容不能为空")
+                }
+                // post 提交
+                // 参数1 URL
+                // 参数2 提交给服务器的数据对象
+                // 参数3 定义提交到时候，表单中数据的格式 {emulateJSON:true}
+                this.$axios.post('http://127.0.0.1:3008/api/submitcomment/'+ this.id ,
+                    {content:this.comMsg},{emulateJSON:true}).then(result => {
+                    if(result.data.status === 0) {
+                        var cmt = {
+                            id:this.commentsData[this.commentsData.length-1].id + 1,
+                            username:"匿名用户",
+                            addtime:new Date(),
+                            content:this.comMsg.trim()
+                        };
+                        this.commentsData.unshift(cmt);
+                        this.comMsg = "";
+                        console.log(this.commentsData)
+                    }else{
+                        Toast("没获取到数据，等等吧..")
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
             }
         },
         created(){
