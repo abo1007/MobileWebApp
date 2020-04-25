@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "babel-plugin-transform-remove-strict-mode": "0.0.2",
     "bootstrap": "^3.4.1",
     "jquery": "^3.4.1",
     "mint-ui": "^2.2.13",

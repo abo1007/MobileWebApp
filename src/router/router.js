@@ -6,7 +6,9 @@ import ShopCarContainer from '../components/ShopCarContainer.vue'
 import MyContainer from '../components/MyContainer.vue'
 
 import NewsList from "../components/news/NewsList.vue"
-import NewsInfo from "../components/news/NewsInfo.vue";
+import NewsInfo from "../components/news/NewsInfo.vue"
+
+import photoList from "../components/photo/photoList.vue"
 
 var router = new vueRouter({
 	routes: [
@@ -16,7 +18,9 @@ var router = new vueRouter({
 		{path: '/shopping',component: ShopCarContainer, meta: {title: '闲得慌App-购物车'}},
 		{path: '/my',component: MyContainer, meta: {title: '闲得慌App-我的'}},
 		{path: '/home/newslist',component: NewsList , meta: {title: '新闻列表'}},
-		{path: '/home/newsinfo/:id',component: NewsInfo , meta: {title: '新闻详细'}}
+		{path: '/home/newsinfo/:id',component: NewsInfo , meta: {title: '新闻详细'}},
+		{path: '/home/photolist',component: photoList , meta: {title: '盗版资源'}}
+
 
 
 	],
