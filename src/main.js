@@ -27,6 +27,13 @@ import axios from 'axios'
 
 Vue.prototype.$axios = axios;
 
+import { Tab, Tabs } from 'vant';
+import 'vant/lib/tab/style'
+import 'vant/lib/tabs/style'
+Vue.use(Tab);
+Vue.use(Tabs);
+
+
 router.beforeEach((to, from, next) => {
 	/* 路由发生变化修改页面title */
 	if (to.meta.title) {

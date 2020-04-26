@@ -18,6 +18,7 @@
     "jquery": "^3.4.1",
     "mint-ui": "^2.2.13",
     "moment": "^2.24.0",
+    "vant": "^2.6.3",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6"
   },
@@ -27,6 +28,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-component": "^1.1.1",
+    "babel-plugin-import": "^1.13.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
