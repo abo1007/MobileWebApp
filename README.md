@@ -95,6 +95,12 @@ may not be accessed on strict mode functions or the arguments objects for calls 
  + 2. 把webpack打包时候的严格模式禁用掉 babel-plugin-transform-remove-strict-mode
 5. 刚进入图片分享页面的时候 ，滑动条无法正常工作，如果初始化滑动条必须要等dom元素加载完毕，所以把初始化放到mounted里
 6. 当滚动条调试ok后，发现tabbar无法正常工作了，这时候，我们需要把每个tabbar按钮的样式中 `mui-tab-item`改一下名字，并赋予原有样式
+(未能成功，更换了vant)
+
+### 制作图片列表区域
+1. 图片列表需要使用懒加载技术，可以使用 MintUI提供的组件 lazy-load
+2. 根据 `lazy-load` 文档使用
+3. 渲染分类数据
 
 
 ## 代码托管

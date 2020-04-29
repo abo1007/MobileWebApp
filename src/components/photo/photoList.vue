@@ -2,7 +2,12 @@
     <div>
         <van-tabs>
             <van-tab v-for="item in photoClass" :title="item.title" :key="item.id">
-                内容
+                <div id="img-container" v-for="ite in photoInfo[item.id]" :key="ite.id">
+                    <img :src="ite.url" alt="">
+                    <div id="img-msg"></div>
+                    <p>{{ite.title}}</p>
+                    <span>{{ite.content}}</span>
+                </div>
             </van-tab>
         </van-tabs>
     </div>
@@ -14,7 +19,8 @@
         name: "photoList",
         data(){
             return{
-                photoClass:[]
+                photoClass:[],
+                photoInfo:[]
             }
         },
         methods:{
@@ -29,10 +35,21 @@
                 }).catch(err => {
                     console.log(err);
                 })
+            },
+            getAllPhotoInfo() {
+                this.$axios.get('http://127.0.0.1:3008/api/getimages/').then(result => {
+                    console.log(result)
+                    if(result.data.status === 0) {
+                        this.photoInfo = result.data.message;
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
             }
         },
         created(){
-            this.getAllClass()
+            this.getAllClass();
+            this.getAllPhotoInfo();
         },
         mounted(){
             // 当组建中的DOM结构被渲染好并放到页面中后，会执行这个钩子函数
@@ -44,5 +61,33 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    #img-container{
+        position: relative;
+        img{
+            height:240px;
+            width:100%;
+        }
+        #img-msg{
+            position:absolute;
+            top:160px;
+            width:100%;
+            height:80px;
+            background:#000000;
+            opacity:0.3;
+        }
+        p{
+            position:absolute;
+            top:165px;
+            color:#fff;
+            font-size:18px;
+        }
+        span{
+            position:absolute;
+            top:190px;
+            color:#fff;
+            font-size:15px;
+        }
+    }
+
 </style>
