@@ -27,11 +27,14 @@ import axios from 'axios'
 
 Vue.prototype.$axios = axios;
 
-import { Tab, Tabs } from 'vant';
+import { Tab, Tabs, Lazyload } from 'vant';
 import 'vant/lib/tab/style'
 import 'vant/lib/tabs/style'
 Vue.use(Tab);
 Vue.use(Tabs);
+Vue.use(Lazyload, {
+	lazyComponent: true,
+});
 
 
 router.beforeEach((to, from, next) => {

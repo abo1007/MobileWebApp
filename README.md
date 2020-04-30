@@ -98,9 +98,15 @@ may not be accessed on strict mode functions or the arguments objects for calls 
 (未能成功，更换了vant)
 
 ### 制作图片列表区域
-1. 图片列表需要使用懒加载技术，可以使用 MintUI提供的组件 lazy-load
+1. 图片列表需要使用懒加载技术，可以使用 MintUI提供的组件 lazy-load(更换了vant)
 2. 根据 `lazy-load` 文档使用
 3. 渲染分类数据
+
+#### 实现了 图片列表的懒加载 和 样式美化
+#### 实现了 点击图片 跳转到 图片详情页面
+1. 在改造 li 成 router-link 的时候，需要使用 tag 属性指定要渲染为 哪种元素
+
+### 实现详情页面的布局和美化 同时获取数据渲染页面
 
 
 ## 代码托管

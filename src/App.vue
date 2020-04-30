@@ -48,6 +48,9 @@ export default {
 
 <style scoped>
 	*{margin:0;padding:0;}
+	.mint-header{
+		z-index:99;
+	}
 	.app-container{
 		margin-top:40px;
 		margin-bottom:50px;

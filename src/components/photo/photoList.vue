@@ -2,12 +2,13 @@
     <div>
         <van-tabs>
             <van-tab v-for="item in photoClass" :title="item.title" :key="item.id">
-                <div id="img-container" v-for="ite in photoInfo[item.id]" :key="ite.id">
-                    <img :src="ite.url" alt="">
+                <router-link id="img-container" :to="'/home/photoinfo/'+ite.id"
+                             v-for="ite in photoInfo[item.id]" :key="ite.id" tag="div">
+                    <img v-lazy="ite.url" />
                     <div id="img-msg"></div>
                     <p>{{ite.title}}</p>
                     <span>{{ite.content}}</span>
-                </div>
+                </router-link>
             </van-tab>
         </van-tabs>
     </div>
@@ -69,6 +70,7 @@
             width:100%;
         }
         #img-msg{
+            display:block;
             position:absolute;
             top:160px;
             width:100%;

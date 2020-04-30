@@ -9,6 +9,7 @@ import NewsList from "../components/news/NewsList.vue"
 import NewsInfo from "../components/news/NewsInfo.vue"
 
 import photoList from "../components/photo/photoList.vue"
+import PhotoInfo from "../components/photo/PhotoInfo.vue"
 
 var router = new vueRouter({
 	routes: [
@@ -19,7 +20,8 @@ var router = new vueRouter({
 		{path: '/my',component: MyContainer, meta: {title: '闲得慌App-我的'}},
 		{path: '/home/newslist',component: NewsList , meta: {title: '新闻列表'}},
 		{path: '/home/newsinfo/:id',component: NewsInfo , meta: {title: '新闻详细'}},
-		{path: '/home/photolist',component: photoList , meta: {title: '盗版资源'}}
+		{path: '/home/photolist',component: photoList , meta: {title: '盗版资源'}},
+		{path: '/home/photoinfo/:id',component: PhotoInfo , meta: {title: '图片详情'}}
 
 
 
