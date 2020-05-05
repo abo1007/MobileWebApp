@@ -11,6 +11,9 @@ import NewsInfo from "../components/news/NewsInfo.vue"
 import photoList from "../components/photo/photoList.vue"
 import PhotoInfo from "../components/photo/PhotoInfo.vue"
 
+import GoodsList from "../components/goods/GoodsList.vue"
+import ContactUs from "../components/contact/ContactUs.vue";
+
 var router = new vueRouter({
 	routes: [
 		{path: '/', redirect: '/home', meta: {title: '闲得慌App'}},
@@ -21,7 +24,10 @@ var router = new vueRouter({
 		{path: '/home/newslist',component: NewsList , meta: {title: '新闻列表'}},
 		{path: '/home/newsinfo/:id',component: NewsInfo , meta: {title: '新闻详细'}},
 		{path: '/home/photolist',component: photoList , meta: {title: '盗版资源'}},
-		{path: '/home/photoinfo/:id',component: PhotoInfo , meta: {title: '图片详情'}}
+		{path: '/home/photoinfo/:id',component: PhotoInfo , meta: {title: '图片详情'}},
+		{path: '/home/goodslist',component: GoodsList , meta: {title: '闲得精选'}},
+		{path: '/home/contact',component: ContactUs , meta: {title: '没事别联系'}}
+
 
 
 

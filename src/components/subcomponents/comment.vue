@@ -5,7 +5,7 @@
         </div>
         <div class="comment-form">
             <textarea placeholder="请输入评论内容" cols="20" rows="6" v-model="comMsg"/>
-            <mt-button type="primary" size="large" @click="postComments">点击评论</mt-button>
+            <van-button type="info" round size="large" @click="postComments">点击评论</van-button>
         </div>
         <div class="comment-content">
             <div class="content-list" v-for="item in commentsData" :key="item.id">
@@ -17,7 +17,7 @@
                     {{item.content}}
                 </div>
             </div>
-            <mt-button type="primary" size="large" @click.native="getMore" plain>加载更多</mt-button>
+            <van-button icon="star-o" type="info" size="large" @click="getMore" plain round>加载更多</van-button>
         </div>
     </div>
 </template>

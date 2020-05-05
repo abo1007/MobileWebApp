@@ -1,9 +1,5 @@
 <template>
 	<div class="app-container">
-
-
-		<mt-header fixed title="闲得慌App"></mt-header>
-
 		<transition>
 			<router-view></router-view>
 		</transition>
@@ -31,6 +27,7 @@
 			</router-link>
 		</nav>
 
+
 	</div>
 </template>
 
@@ -52,12 +49,11 @@ export default {
 		z-index:99;
 	}
 	.app-container{
-		margin-top:40px;
-		margin-bottom:50px;
+
 		overflow-x:hidden;
 	}
 	.mui-active{
-	transition:all 0.6s ease;
+		transition:all 0.6s ease;
 	}
 	.v-enter{
 		opacity: 0;

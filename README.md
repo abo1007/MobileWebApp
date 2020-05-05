@@ -108,6 +108,9 @@ may not be accessed on strict mode functions or the arguments objects for calls 
 
 ### 实现详情页面的布局和美化 同时获取数据渲染页面
 
+### 实现图片详细中 缩略图的功能
+
+### 绘制商品列表页面基本结构并美化
 
 ## 代码托管
 

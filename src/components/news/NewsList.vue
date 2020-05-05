@@ -1,5 +1,13 @@
 <template>
     <div id="app">
+        <van-nav-bar
+                title="最老资讯-列表"
+                left-text="返回"
+                right-text="搜索"
+                left-arrow
+                @click-left="goHome"
+                @click-right="goSearch"
+        />
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="item in newsList" :key="item.id" >
                 <router-link :to="'/home/newsinfo/'+ item.id">
@@ -18,6 +26,7 @@
 </template>
 
 <script>
+    import { Toast } from 'mint-ui';
     export default {
         name: "NewsList",
         data(){
@@ -38,6 +47,12 @@
                 }).catch(function (err) {
                     console.log(err.message)
                 })
+            },
+            goHome(){
+                this.$router.push('/home')
+            },
+            goSearch(){
+                Toast ('诶呀，还没做呢')
             }
         },
         created() {

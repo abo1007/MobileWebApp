@@ -1,5 +1,11 @@
 <template>
     <div id="app-newsinfo">
+        <van-nav-bar
+                title="最老资讯"
+                left-text="返回"
+                left-arrow
+                @click-left="goNewsList"
+        />
         <div class="header">
             <h4>{{ newsinfo.title }}</h4>
             <p>
@@ -12,7 +18,7 @@
                 {{ newsinfo.zhaiyao }}
             </p>
         </div>
-        <comment-box :id="this.id"></comment-box>
+        <comment-box :id="id"></comment-box>
     </div>
 </template>
 
@@ -42,6 +48,9 @@
                 }).catch(function (err) {
                     console.log(err);
                 })
+            },
+            goNewsList(){
+                this.$router.push('/home/newslist')
             }
         },
         created() {

@@ -12,11 +12,11 @@ Vue.filter('dateFormat', function(dataStr,pattern = "YYYY-MM-DD HH:mm:ss"){
 
 import app from './App.vue'
 
-import { Header, Swipe, SwipeItem, Button} from 'mint-ui'
+import { Header, Swipe, SwipeItem} from 'mint-ui'
 Vue.component(Header.name,Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+// Vue.component(Button.name, Button);
 
 import './lib/MUI/css/mui.min.css'
 import './lib/MUI/css/icons-extra.css'
@@ -27,11 +27,21 @@ import axios from 'axios'
 
 Vue.prototype.$axios = axios;
 
-import { Tab, Tabs, Lazyload } from 'vant';
+import { Tab, Tabs, Lazyload, Card, Button, Tag, NoticeBar, NavBar } from 'vant';
 import 'vant/lib/tab/style'
 import 'vant/lib/tabs/style'
+import 'vant/lib/card/style'
+import 'vant/lib/button/style'
+import 'vant/lib/tag/style'
+import 'vant/lib/notice-bar/style'
+import 'vant/lib/nav-bar/style'
+Vue.use(NavBar);
 Vue.use(Tab);
 Vue.use(Tabs);
+Vue.use(Button);
+Vue.use(Card);
+Vue.use(Tag);
+Vue.use(NoticeBar);
 Vue.use(Lazyload, {
 	lazyComponent: true,
 });

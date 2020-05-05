@@ -1,5 +1,11 @@
 <template>
     <div id="photoinfo-container">
+        <van-nav-bar
+                title="图片详情"
+                left-text="返回"
+                left-arrow
+                @click-left="goHome"
+        />
         <div class="header">
             <h3>{{photoinfo.title}}</h3>
             <p>
@@ -11,7 +17,7 @@
             <img v-lazy="photoinfo.url">
             <p> {{photoinfo.content}} </p>
         </div>
-        <comment-box></comment-box>
+        <comment-box :id="id"></comment-box>
     </div>
 </template>
 
@@ -41,6 +47,9 @@
                 }).catch(err => {
                     console.log(err);
                 })
+            },
+            goHome(){
+                this.$router.push('/home/photolist')
             }
         },
         created() {
@@ -72,7 +81,7 @@
                 max-height:300px;
             }
             p{
-
+                text-indent:2em;color:#000000;
             }
         }
     }

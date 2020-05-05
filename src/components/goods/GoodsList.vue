@@ -1,0 +1,107 @@
+<template>
+    <div id="goodList-container">
+        <van-nav-bar
+                title="闲得精选"
+                left-text="返回"
+                right-text="搜索"
+                left-arrow
+                @click-left="goHome"
+                @click-right="goSearch"
+        />
+        <div class="goodslist-content">
+            <div class="goods-item">
+                <img src="/images/cd.png">
+                <p class="title">DJI 大疆灵眸osmo pocket 口袋云台相机</p>
+                <p class="price">
+                    <span class="now">￥2499</span>
+                    <span class="old">￥3347</span>
+                </p>
+                <p class="info">
+                    <span>75折</span>
+                    <span>剩999件</span>
+                </p>
+            </div>
+            <div class="goods-item">
+                <img src="/images/cd.png"   alt="">
+                <p class="title">DJI 大疆灵眸osmo pocket 口袋云台相机,DJI 大疆灵眸osmo pocket 口袋云台相机</p>
+                <p class="price">
+                    <span class="now">￥2499</span>
+                    <span class="old">￥3347</span>
+                </p>
+                <p class="info">
+                    <span>75折</span>
+                    <span>剩999件</span>
+                </p>
+            </div>
+            <div class="goods-item">
+                <img src="/images/cd.png"   alt="">
+                <p class="title">DJI 大疆灵眸osmo pocket 口袋云台相机</p>
+                <p class="price">
+                    <span class="now">￥2499</span>
+                    <span class="old">￥3347</span>
+                </p>
+                <p class="info">
+                    <span>75折</span>
+                    <span>剩999件</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</template>
+
+<script>
+    import {Toast} from "mint-ui";
+
+    export default {
+        name: "GoodsList",
+        data(){
+            return{
+                a:1
+            }
+        },
+        methods:{
+            goHome(){
+                this.$router.push('/home')
+            },
+            goSearch(){
+                Toast ('诶呀，还没做呢')
+            }
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    *{margin:0;padding:0;}
+    .goodslist-content{
+
+        display:flex;
+        flex-wrap:wrap;
+        .goods-item{
+            width:48%;
+            margin:1%;
+            height:250px;
+            border:1px solid #ccc;
+            box-shadow:0 0 6px #ccc;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            img{
+                width:100%;height:65%;
+            }
+            .title{
+                font-weight:bold;color:#000;height:40px;overflow:hidden;
+            }
+            .price{
+                .now{color:#ff0000;font-weight:bold;font-size:1.2em;}
+                .old{text-decoration:line-through;font-size:0.9em;}
+            }
+            .info{
+                display:flex;
+                justify-content:space-between;
+                background:#eee;
+                font-size:0.7em;
+            }
+        }
+    }
+</style>

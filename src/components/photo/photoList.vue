@@ -1,13 +1,22 @@
 <template>
     <div>
+        <van-nav-bar
+                title="盗版资源-列表"
+                left-text="返回"
+                right-text="搜索"
+                left-arrow
+                @click-left="goHome"
+                @click-right="goSearch"
+        />
         <van-tabs>
             <van-tab v-for="item in photoClass" :title="item.title" :key="item.id">
                 <router-link id="img-container" :to="'/home/photoinfo/'+ite.id"
                              v-for="ite in photoInfo[item.id]" :key="ite.id" tag="div">
                     <img v-lazy="ite.url" />
-                    <div id="img-msg"></div>
-                    <p>{{ite.title}}</p>
-                    <span>{{ite.content}}</span>
+                    <div id="img-msg">
+                        <p>{{ite.title}}</p>
+                        <span>{{ite.content}}</span>
+                    </div>
                 </router-link>
             </van-tab>
         </van-tabs>
@@ -15,6 +24,8 @@
 </template>
 
 <script>
+
+    import {Toast} from "mint-ui";
 
     export default {
         name: "photoList",
@@ -39,13 +50,19 @@
             },
             getAllPhotoInfo() {
                 this.$axios.get('http://127.0.0.1:3008/api/getimages/').then(result => {
-                    console.log(result)
+                    // console.log(result)
                     if(result.data.status === 0) {
                         this.photoInfo = result.data.message;
                     }
                 }).catch(err => {
                     console.log(err);
                 })
+            },
+            goHome(){
+                this.$router.push('/home')
+            },
+            goSearch(){
+                Toast ('诶呀，还没做呢')
             }
         },
         created(){
@@ -75,18 +92,18 @@
             top:160px;
             width:100%;
             height:80px;
-            background:#000000;
-            opacity:0.3;
+            background:rgba(0,0,0,0.3);
+            overflow: hidden;
         }
         p{
-            position:absolute;
-            top:165px;
+            position:relative;
+            top:5px;
             color:#fff;
             font-size:18px;
         }
         span{
-            position:absolute;
-            top:190px;
+            position:relative;
+            top:0px;
             color:#fff;
             font-size:15px;
         }
