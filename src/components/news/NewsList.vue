@@ -36,7 +36,7 @@
         },
         methods:{
             getNewsList() {
-                this.$axios.get('http://127.0.0.1:3008/api/getnewslist').then(result => {
+                this.$axios.get('/api/getnewslist').then(result => {
                     // console.log(result);
                     if(result.data.status === 0) {
                         this.newsList = result.data.message

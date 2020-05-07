@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app-my">
         <h2>MyContainer</h2>
     </div>
 </template>
@@ -9,7 +9,7 @@ export default {
 	name:'MyContainer',
 	data(){
 		return{
-			
+
 		}
 	}
 
@@ -17,5 +17,8 @@ export default {
 </script>
 
 <style scoped>
-
+#app-my{
+    margin-bottom:50px;
+    height:100vh;
+}
 </style>

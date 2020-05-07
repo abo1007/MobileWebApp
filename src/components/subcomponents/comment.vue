@@ -36,7 +36,7 @@
         },
         methods:{
             getCommentsData() {
-                this.$axios.get('http://127.0.0.1:3008/api/getcomments?newsid=' + this.id + '&pageindex=' + this.pageIndex)
+                this.$axios.get('/api/getcomments?newsid=' + this.id + '&pageindex=' + this.pageIndex)
                 .then(result => {
                     if (result.data.status === 0) {
                         this.commentsData = result.data.message
@@ -65,7 +65,7 @@
                 // 参数1 URL
                 // 参数2 提交给服务器的数据对象
                 // 参数3 定义提交到时候，表单中数据的格式 {emulateJSON:true}
-                this.$axios.post('http://127.0.0.1:3008/api/submitcomment/'+ this.id ,
+                this.$axios.post('/api/submitcomment/'+ this.id ,
                     {content:this.comMsg},{emulateJSON:true}).then(result => {
                     if(result.data.status === 0) {
                         var cmt = {

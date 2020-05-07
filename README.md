@@ -112,6 +112,11 @@ may not be accessed on strict mode functions or the arguments objects for calls 
 
 ### 绘制商品列表页面基本结构并美化
 
+### 尝试在手机上去进行项目的预览和测试
+1. 电脑手机处于同一个 WIFI 环境中
+2. 打开 package.json 文件中，在 dev脚本中，添加一个 --host 指令，把当前电脑wifi ip地址设置为 --host的指令值
+
+
 ## 代码托管
 
 #### 传统命令行方式 git 提交代码

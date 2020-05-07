@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app-home">
 		<van-nav-bar title="闲得慌 App" id="home-nav-title" />
 		<mt-swipe :auto="4000">
 			<mt-swipe-item v-for="item in swipeList" :key="item.url">
@@ -106,7 +106,7 @@ export default {
 	},
 	methods:{
 		getSwipe() {
-			this.$axios.get('http://127.0.0.1:3008/api/getswipe').then(result => {
+			this.$axios.get('/api/getswipe').then(result => {
 				// console.log(result)
 				this.swipeList = result.data
 			}).catch(err => {
@@ -121,6 +121,9 @@ export default {
 </script>
 
 <style lang="scss">
+	#app-home{
+		margin-bottom:50px;
+	}
 #home-nav-title{background-color:#2E9BED;
 	.van-nav-bar__title{
 		color:#fff;
