@@ -26,7 +26,8 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),    // new 一个热更新的模块对象 第三步
         new htmlWebpackPlugin({     // 创建一个 在内存中生成HTML页面的插件
             template: path.join(__dirname,'src','index.html'),  // 这是指定的模板页面，将来会根据指定的页面路径去生成内存中的页面
-            fliename:'index.html'    // 指定生成的页面名称
+            fliename:'index.html',    // 指定生成的页面名称
+            favicon: './src/favicon.ico'
         }),
         new VueLoaderPlugin()
     ],

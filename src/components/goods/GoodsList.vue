@@ -9,40 +9,16 @@
                 @click-right="goSearch"
         />
         <div class="goodslist-content">
-            <div class="goods-item">
-                <img src="/images/cd.png">
-                <p class="title">DJI 大疆灵眸osmo pocket 口袋云台相机</p>
+            <div class="goods-item" v-for="item in goodslist">
+                <img :src="item.imgurl">
+                <p class="title">{{item.name}}</p>
                 <p class="price">
-                    <span class="now">￥2499</span>
-                    <span class="old">￥3347</span>
+                    <span class="now">￥{{item.price}}</span>
+                    <span class="old">￥{{item.old_price}}</span>
                 </p>
                 <p class="info">
                     <span>75折</span>
-                    <span>剩999件</span>
-                </p>
-            </div>
-            <div class="goods-item">
-                <img src="/images/cd.png"   alt="">
-                <p class="title">DJI 大疆灵眸osmo pocket 口袋云台相机,DJI 大疆灵眸osmo pocket 口袋云台相机</p>
-                <p class="price">
-                    <span class="now">￥2499</span>
-                    <span class="old">￥3347</span>
-                </p>
-                <p class="info">
-                    <span>75折</span>
-                    <span>剩999件</span>
-                </p>
-            </div>
-            <div class="goods-item">
-                <img src="/images/cd.png"   alt="">
-                <p class="title">DJI 大疆灵眸osmo pocket 口袋云台相机</p>
-                <p class="price">
-                    <span class="now">￥2499</span>
-                    <span class="old">￥3347</span>
-                </p>
-                <p class="info">
-                    <span>75折</span>
-                    <span>剩999件</span>
+                    <span>剩{{item.count}}件</span>
                 </p>
             </div>
 
@@ -57,16 +33,31 @@
         name: "GoodsList",
         data(){
             return{
-                a:1
+                goodslist:[],
+                pageindex:1
             }
         },
         methods:{
+            getGoodsList(){
+                this.$axios.get('/api/getgoodslist?pageindex='+ this.pageindex).then(result => {
+                    console.log(result)
+                    if (result.data.status === 0){
+                        this.goodslist = result.data.message
+                    }else{
+                        Toast('诶，服务器出问题了！')
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            },
             goHome(){
                 this.$router.push('/home')
             },
             goSearch(){
                 Toast ('诶呀，还没做呢')
             }
+        },created() {
+            this.getGoodsList()
         }
     }
 </script>
