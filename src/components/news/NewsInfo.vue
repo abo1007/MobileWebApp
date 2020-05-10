@@ -65,6 +65,7 @@
 <style lang="scss" scoped>
 #app-newsinfo{
     padding:0 4px;
+    margin-bottom:50px;
     *{margin:0;}
     .header{
         border-bottom:1px solid #4d4d4d;

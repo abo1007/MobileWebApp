@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="photolist-contaniner">
         <van-nav-bar
                 title="盗版资源-列表"
                 left-text="返回"
@@ -80,6 +80,9 @@
 </script>
 
 <style lang="scss" scoped>
+    #photolist-contaniner{
+        margin-bottom:50px;
+    }
     #img-container{
         position: relative;
         img{

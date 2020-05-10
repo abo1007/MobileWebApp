@@ -62,6 +62,9 @@
 </script>
 
 <style lang="scss" scoped>
+    #app{
+        margin-bottom:50px;
+    }
     .mui-media-body{
 
         .mui-table-body-p1{

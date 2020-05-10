@@ -64,6 +64,7 @@
 <style lang="scss" scoped>
     *{margin:0;padding:0;}
     #photoinfo-container{
+        margin-bottom:50px;
         .header{
             border-bottom:1px solid #ccc;
             margin-bottom:10px;

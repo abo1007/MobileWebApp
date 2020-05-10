@@ -23,6 +23,9 @@
             </div>
 
         </div>
+        <van-button type="warning" size="large"
+                    color="linear-gradient(to right, #4bb0ff, #6149f6)"
+                    round @click.native="getMore">加载更多...</van-button>
     </div>
 </template>
 
@@ -42,13 +45,17 @@
                 this.$axios.get('/api/getgoodslist?pageindex='+ this.pageindex).then(result => {
                     console.log(result)
                     if (result.data.status === 0){
-                        this.goodslist = result.data.message
+                        this.goodslist =this.goodslist.concat(result.data.message)
                     }else{
                         Toast('诶，服务器出问题了！')
                     }
                 }).catch(err => {
                     console.log(err);
                 })
+            },
+            getMore(){
+                this.pageindex++;
+                this.getGoodsList()
             },
             goHome(){
                 this.$router.push('/home')
@@ -64,6 +71,9 @@
 
 <style lang="scss" scoped>
     *{margin:0;padding:0;}
+    #goodList-container{
+        margin-bottom:50px;
+    }
     .goodslist-content{
 
         display:flex;
