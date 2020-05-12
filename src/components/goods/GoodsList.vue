@@ -9,7 +9,20 @@
                 @click-right="goSearch"
         />
         <div class="goodslist-content">
-            <div class="goods-item" v-for="item in goodslist">
+<!--            <router-link class="goods-item" v-for="item in goodslist" :to="'goodsinfo/' + item.id">-->
+<!--                <img :src="item.imgurl">-->
+<!--                <p class="title">{{item.name}}</p>-->
+<!--                <p class="price">-->
+<!--                    <span class="now">￥{{item.price}}</span>-->
+<!--                    <span class="old">￥{{item.old_price}}</span>-->
+<!--                </p>-->
+<!--                <p class="info">-->
+<!--                    <span>75折</span>-->
+<!--                    <span>剩{{item.count}}件</span>-->
+<!--                </p>-->
+<!--            </router-link>-->
+
+            <div class="goods-item" v-for="item in goodslist" @click="goInfo(item.id)">
                 <img :src="item.imgurl">
                 <p class="title">{{item.name}}</p>
                 <p class="price">
@@ -62,6 +75,9 @@
             },
             goSearch(){
                 Toast ('诶呀，还没做呢')
+            },
+            goInfo(id){
+                this.$router.push('/home/goodsinfo/' + id)
             }
         },created() {
             this.getGoodsList()

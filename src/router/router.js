@@ -12,6 +12,7 @@ import photoList from "../components/photo/photoList.vue"
 import PhotoInfo from "../components/photo/PhotoInfo.vue"
 
 import GoodsList from "../components/goods/GoodsList.vue"
+import GoodsInfo from "../components/goods/GoodsInfo.vue";
 
 import ContactUs from "../components/contact/ContactUs.vue"
 import feedback from "../components/feedback/feedback.vue"
@@ -28,6 +29,7 @@ var router = new vueRouter({
 		{path: '/home/photolist',component: photoList , meta: {title: '盗版资源'}},
 		{path: '/home/photoinfo/:id',component: PhotoInfo , meta: {title: '图片详情'}},
 		{path: '/home/goodslist',component: GoodsList , meta: {title: '闲得精选'}},
+		{path: '/home/goodsinfo/:id',component: GoodsInfo , meta: {title: '闲得精选-商品详情'}},
 		{path: '/home/contact',component: ContactUs , meta: {title: '没事别联系'}},
 		{path: '/home/feedback',component: feedback , meta: {title: '无聊留言'}}
 
