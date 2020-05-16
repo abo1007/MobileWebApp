@@ -1,5 +1,6 @@
 <template>
     <div id="app-my">
+        <van-nav-bar title="闲得慌 我" id="home-nav-title" />
         <h2>MyContainer</h2>
     </div>
 </template>

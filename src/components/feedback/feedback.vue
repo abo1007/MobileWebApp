@@ -10,31 +10,49 @@
         <textarea id="textarea-container" cols="30" rows="10"></textarea>
         <van-button plain type="info" round size="large">点击吐槽</van-button>
         <div class="feedback-content">
-            <div class="item">
+            <div class="item" v-for="item in feedbackContent" :key="item.id">
                 <p class="title">
-                    <span>匿名用户</span>
-                    <span>2020-05-11 08:00:00</span>
+                    <span>{{item.username}}</span>
+                    <span>{{item.addtime}}</span>
                 </p>
-                <p class="content">
-                    这软件太垃圾了，打开居然没有人发红包？垃圾！
-                </p>
+                <p class="content">{{item.content}}</p>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {Toast} from "mint-ui";
+
     export default {
         name: "feedback",
         data(){
             return{
-                msg:"好消息！好消息！本留言功能因吐槽人数过多，特地关闭，开放时间另行通知..."
+                msg:"好消息！好消息！本留言功能因吐槽人数过多，特地关闭，开放时间另行通知...",
+                feedbackContent:[]
             }
         },
         methods:{
+            getfeedbackContent(){
+              this.$axios.get('/api/getfeedback').then(result => {
+                  if (result.data.status === 0) {
+                      this.feedbackContent = result.data.message
+                  }else{
+                      Toast ({
+                          message:'留言丢失了...去看看其他页面吧',
+                          duration: 5000
+                      })
+                  }
+              }).catch(err => {
+                  console.log(err);
+              })
+            },
             goHome(){
                 this.$router.push('/home')
             }
+        },
+        created() {
+            this.getfeedbackContent();
         }
     }
 </script>
