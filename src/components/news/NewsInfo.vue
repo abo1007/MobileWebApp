@@ -18,7 +18,7 @@
                 {{ newsinfo.zhaiyao }}
             </p>
         </div>
-        <comment-box :id="id"></comment-box>
+        <comment-box :id="id" />
     </div>
 </template>
 

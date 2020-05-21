@@ -45,7 +45,8 @@ module.exports = {
     resolve: {
         alias:{     // 修改 Vue 被导入时候包的路径
             // 'vue$':'vue/dist/vue.js'
-        }
+        },
+        extensions: ['.vue','.js']
     }
 }
 // 当我们在控制台直接输入webpack命令执行的时候，webpack做了以下几步

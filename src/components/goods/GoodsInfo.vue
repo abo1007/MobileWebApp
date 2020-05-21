@@ -23,8 +23,8 @@
                     </p>
                     <p>购买数量 <num-box class="numbox"></num-box></p>
                     <p>
-                        <van-button type="danger" round size="small">点击购买</van-button>
-                        <van-button type="info" round size="small">加入购物车</van-button>
+                        <van-button type="danger" round size="normal">点击购买</van-button>
+                        <van-button type="info" round size="normal">加入购物车</van-button>
                     </p>
                 </div>
             </div>
@@ -33,10 +33,21 @@
             <div class="mui-card-header">{{goodsInfoData.content}}</div>
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
-
+                    <p class="content-1">
+                        热度 <span class="hot">{{goodsInfoData.count}}</span>
+                    </p>
+                    <p class="content-2">
+                        点击量 <span class="click">{{goodsInfoData.click_count}}</span>
+                    </p>
+                    <p class="content-3">
+                        上架时间 <span class="addtime">{{goodsInfoData.addtime | dateFormat}}</span>
+                    </p>
                 </div>
             </div>
-            <div class="mui-card-footer">页脚</div>
+            <div class="mui-card-footer">
+                <van-button type="primary" round size="large" @click="goDesc(id)">图文详情</van-button>
+                <van-button type="warning" round size="large" @click="goComment(id)">商品评价</van-button>
+            </div>
         </div>
     </div>
 </template>
@@ -70,6 +81,12 @@
             },
             goList(){
                 this.$router.push('/home/goodslist/')
+            },
+            goDesc(id){
+                this.$router.push({ name : 'goodsdesc', params: {id} })
+            },
+            goComment(id){
+                this.$router.push({ name : 'goodscomment', params: {id} })
             }
         },
         created() {
@@ -85,6 +102,7 @@
 #goodsinfo-container{
     background-color:#eee;
     overflow:hidden;
+    margin-bottom:50px;
 }
 .mui-card-content-inner{
     img{
@@ -108,5 +126,8 @@
             font-weight:bold;padding:0 10px;color:#ff0000;font-size:1.2em;
         }
     }
+}
+.mui-card-footer{
+    height:auto;
 }
 </style>
