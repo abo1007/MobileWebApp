@@ -9,7 +9,7 @@
                 @click-right="goSearch"
         />
         <ul class="mui-table-view">
-            <li class="mui-table-view-cell mui-media" v-for="item in newsList" :key="item.id" >
+            <li class="mui-table-view-cell mui-media" v-for="item in newsList" :key="item.id">
                 <router-link :to="'/home/newsinfo/'+ item.id">
                     <img class="mui-media-object mui-pull-left" :src="item.imgUrl">
                     <div class="mui-media-body">
@@ -26,33 +26,34 @@
 </template>
 
 <script>
-    import { Toast } from 'mint-ui';
+    import {Toast} from 'mint-ui';
+
     export default {
         name: "NewsList",
-        data(){
-            return{
-                newsList:[]
+        data() {
+            return {
+                newsList: []
             }
         },
-        methods:{
+        methods: {
             getNewsList() {
                 this.$axios.get('/api/getnewslist').then(result => {
                     // console.log(result);
-                    if(result.data.status === 0) {
+                    if (result.data.status === 0) {
                         this.newsList = result.data.message
                     } else {
-                        Toast ('系统维护中!')
+                        Toast('系统维护中!')
                     }
 
                 }).catch(function (err) {
                     console.log(err.message)
                 })
             },
-            goHome(){
+            goHome() {
                 this.$router.push('/home')
             },
-            goSearch(){
-                Toast ('诶呀，还没做呢')
+            goSearch() {
+                Toast('诶呀，还没做呢')
             }
         },
         created() {
@@ -62,21 +63,21 @@
 </script>
 
 <style lang="scss" scoped>
-    #app{
-        margin-bottom:50px;
+    #app {
+        margin-bottom: 50px;
     }
-    .mui-media-body{
-
-        .mui-table-body-p1{
-            font-size:16px;color:#000000;font-weight:600;
-
+    .mui-media-body {
+        .mui-table-body-p1 {
+            font-size: 16px;
+            color: #000000;
+            font-weight: 600;
         }
-        .mui-ellipsis{
-            font-size:13px;
-            display:flex;
+        .mui-ellipsis {
+            font-size: 13px;
+            display: flex;
             justify-content: space-between;
-            span{
-                color:#228B22;
+            span {
+                color: #228B22;
             }
         }
     }

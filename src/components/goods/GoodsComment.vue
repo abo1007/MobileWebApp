@@ -6,10 +6,12 @@
                 left-arrow
                 @click-left="goInfo(id)"
         />
+        <com-box :id="id"></com-box>
     </div>
 </template>
 
 <script>
+    import comment from "../subcomponents/comment";
     export default {
         name: "GoodsComment",
         data(){
@@ -21,6 +23,9 @@
             goInfo(id){
                 this.$router.push({ name : 'goodsinfo', params: {id} })
             }
+        },
+        components:{
+            'com-box':comment
         }
     }
 </script>
