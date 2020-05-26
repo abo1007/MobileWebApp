@@ -6,6 +6,13 @@
                 left-arrow
                 @click-left="goList"
         />
+        <transition
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+        >
+            <div class="ball" v-show="Isballshow" ref="ball"></div>
+        </transition>
         <div class="mui-card">
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
@@ -24,7 +31,7 @@
                     <p>购买数量 <num-box class="numbox"></num-box></p>
                     <p>
                         <van-button type="danger" round size="normal">点击购买</van-button>
-                        <van-button type="info" round size="normal">加入购物车</van-button>
+                        <van-button type="info" round size="normal" @click="addToShopCar">加入购物车</van-button>
                     </p>
                 </div>
             </div>
@@ -60,7 +67,8 @@
         data(){
             return{
                 id:this.$route.params.id,
-                goodsInfoData:{}
+                goodsInfoData:{},
+                Isballshow:false
             }
         },
         methods:{
@@ -87,6 +95,28 @@
             },
             goComment(id){
                 this.$router.push({ name : 'goodscomment', params: {id} })
+            },
+            addToShopCar(){
+                this.Isballshow = !this.Isballshow
+            },
+            beforeEnter(el){
+                el.style.transform = "translate(0,0)"
+            },
+            enter(el, done){
+                el.offsetWidth;
+                // 小球动画优化 坐标值不应写死 应该动态获取
+                const ballPosition = this.$refs.ball.getBoundingClientRect();
+                const badgePosition = document.getElementById('badge').getBoundingClientRect();
+
+                const XDist = badgePosition.left - ballPosition.left;
+                const YDist = badgePosition.top - ballPosition.top;
+
+                el.style.transform = `translate(${XDist}px,${YDist}px)`;
+                el.style.transition = "all 1s cubic-bezier(.4,-0.3,1,.68)";
+                done();
+            },
+            afterEnter(el){
+                this.Isballshow = !this.Isballshow
             }
         },
         created() {
@@ -103,10 +133,14 @@
     background-color:#eee;
     overflow:hidden;
     margin-bottom:50px;
+    .ball{
+        height:20px;width:20px;border-radius:10px;background-color:#ff0000;position:absolute;z-index:99;
+        top:465px;left:150px;
+    }
 }
 .mui-card-content-inner{
     img{
-        width:100%;max-height:400px;
+        width:100%;height:250px;
     }
     p{
         height:40px;

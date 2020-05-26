@@ -33,7 +33,7 @@
 			</li>
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<router-link to="/home/photolist">
-					<span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
+					<span class="mui-icon mui-icon-email"><span class="mui-badge" >5</span></span>
 					<div class="mui-media-body">盗版资源</div>
 				</router-link>
 			</li>

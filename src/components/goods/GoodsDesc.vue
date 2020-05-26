@@ -10,9 +10,7 @@
             <p>{{info.name}}</p>
             <hr />
         </div>
-        <div class="content">
-            {{info.content}}
-        </div>
+        <div class="content" v-html="info.content"></div>
     </div>
 </template>
 
@@ -51,6 +49,17 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+#goods-desc{
+    margin-bottom:50px;
+    .header{
+        margin-top:10px;
+        p{
+            font-size:1.5em;line-height:35px;text-align:center;color:#000;
+        }
+    }
+    .content{
+        text-indent:15px;
+    }
+}
 </style>
