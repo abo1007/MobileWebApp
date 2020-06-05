@@ -28,7 +28,7 @@
                         原价:<span class="oldprice">{{goodsInfoData.old_price}}</span>
                         现价:<span class="newprice">{{goodsInfoData.price}}</span>
                     </p>
-                    <p>购买数量 <num-box class="numbox"></num-box></p>
+                    <p>购买数量 <num-box class="numbox" @getcount="getSelectedCount" :max="goodsInfoData.count"></num-box></p>
                     <p>
                         <van-button type="danger" round size="normal">点击购买</van-button>
                         <van-button type="info" round size="normal" @click="addToShopCar">加入购物车</van-button>
@@ -41,7 +41,7 @@
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
                     <p class="content-1">
-                        热度 <span class="hot">{{goodsInfoData.count}}</span>
+                        库存 <span class="hot">{{goodsInfoData.count}}</span>
                     </p>
                     <p class="content-2">
                         点击量 <span class="click">{{goodsInfoData.click_count}}</span>
@@ -68,7 +68,8 @@
             return{
                 id:this.$route.params.id,
                 goodsInfoData:{},
-                Isballshow:false
+                Isballshow:false,
+                selecttedCount:1    // 商品数量
             }
         },
         methods:{
@@ -117,6 +118,12 @@
             },
             afterEnter(el){
                 this.Isballshow = !this.Isballshow
+            },
+            getSelectedCount(count){
+                // 当子组件把选中的数量传递给父组件的时候，把选中的值保存到data上
+                this.selectedCount = count || 1;
+                // 强行不变成0
+                console.log('父组件拿到的数据' + this.selectedCount)
             }
         },
         created() {
