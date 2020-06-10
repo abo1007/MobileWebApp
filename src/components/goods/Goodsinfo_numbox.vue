@@ -27,7 +27,7 @@
         watch:{
             // 使用监听属性 动态监听并赋予max值 因为goodsinfo组件的then没有执行完毕时该组件可能已加载
             'max':(val, oldVal) => {
-                mui('.mui-numbox').numbox().setOption('step',val);// JsAPI 设置最大值
+                mui('.mui-numbox').numbox().setOption('max',val);// JsAPI 设置最大值
             }
         }
     }
