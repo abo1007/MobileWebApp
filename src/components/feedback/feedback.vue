@@ -60,8 +60,8 @@
                         this.feedbackSendContent = "";
                     }else{
                         Toast ({
-                            message:'留言丢失了...去看看其他页面吧',
-                            duration: 5000
+                            message : '留言丢失了...去看看其他页面吧',
+                            duration : 5000
                         })
                     }
                 }).catch(err => {

@@ -69,7 +69,7 @@
                 id:this.$route.params.id,
                 goodsInfoData:{},
                 Isballshow:false,
-                selecttedCount:1    // 商品数量
+                selectedCount:1    // 商品数量
             }
         },
         methods:{
@@ -98,7 +98,10 @@
                 this.$router.push({ name : 'goodscomment', params: {id} })
             },
             addToShopCar(){
-                this.Isballshow = !this.Isballshow
+                this.Isballshow = !this.Isballshow;
+                // { id:商品id, count: 要购买的数量, price:商品的单价, selected: true }
+                var goodsinfo = { id: this.id, count: this.selectedCount, price: this.goodsInfoData.price, selected: true }
+                this.$store.commit('addToCar',goodsinfo);
             },
             beforeEnter(el){
                 el.style.transform = "translate(0,0)"

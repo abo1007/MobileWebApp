@@ -4,6 +4,37 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
+import Vuex from 'vuex'
+
+Vue.use(Vuex);
+
+var store = new Vuex.Store({
+	state:{
+		car:[	// 将购物车中的商品数据，用一个数组存储起来，在car数组中，存储一些商品的对象，{ id:商品id, count: 要购买的数量, price:商品的单价, selected: true }
+
+		]
+	},
+	mutations:{
+		addToCar(state,goodsinfo){		// 加入购物车保存信息
+			let flag = false;
+			// 如果之前已经有这个商品的话 直接增加数量
+			state.car.some(item => {
+				if(item.id == goodsinfo.id){
+					item.count += goodsinfo.count;
+					flag = true;
+					return true;
+				}
+			});
+			if(!flag){
+				this.state.car.push(goodsinfo);
+			}
+		}
+	},
+	getters:{
+
+	}
+});
+
 import moment from "moment";
 
 Vue.filter('dateFormat', function(dataStr,pattern = "YYYY-MM-DD HH:mm:ss"){
@@ -12,7 +43,7 @@ Vue.filter('dateFormat', function(dataStr,pattern = "YYYY-MM-DD HH:mm:ss"){
 
 import app from './App.vue'
 
-import { Header, Swipe, SwipeItem} from 'mint-ui'
+import { Header, Swipe, SwipeItem} from 'mint-ui';
 Vue.component(Header.name,Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
@@ -47,7 +78,7 @@ Vue.use(Lazyload, {
 });
 
 // 设置全局请求头
-const url='http://127.0.0.1:3008'
+const url='http://127.0.0.1:3008';
 axios.interceptors.request.use(
 	config => {
 		let token = localStorage.getItem("x-auth-token");
@@ -74,5 +105,6 @@ router.beforeEach((to, from, next) => {
 var vm = new Vue({
 	el:'#app',
 	render:c => c(app),
-	router
+	router,
+	store
 });
