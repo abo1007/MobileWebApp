@@ -31,7 +31,14 @@ var store = new Vuex.Store({
 		}
 	},
 	getters:{
-
+		// 相当于计算属性 也相当于 filters
+		getAllCount(state){
+			let c = 0;
+			state.car.forEach(item => {
+				c += item.count;
+			});
+			return c;
+		}
 	}
 });
 
