@@ -19,6 +19,8 @@ import GoodsComment from "../components/goods/GoodsComment"
 import ContactUs from "../components/contact/ContactUs"
 import feedback from "../components/feedback/feedback"
 
+import VideoHome from "../components/video/VideoHome";
+
 var router = new vueRouter({
 	routes: [
 		{path: '/', redirect: '/home', meta: {title: '闲得慌App'}},
@@ -35,7 +37,8 @@ var router = new vueRouter({
 		{path: '/home/goodsdesc/:id',component: GoodsDesc , meta: {title: '图文详情'}, name: 'goodsdesc'},
 		{path: '/home/goodscomment/:id',component: GoodsComment , meta: {title: '商品评价'}, name: 'goodscomment'},
 		{path: '/home/contact',component: ContactUs , meta: {title: '没事别联系'}},
-		{path: '/home/feedback',component: feedback , meta: {title: '无聊留言'}}
+		{path: '/home/feedback',component: feedback , meta: {title: '无聊留言'}},
+		{path: '/home/videohome',component: VideoHome , meta: {title: '没劲视频'}}
 
 	],
 	linkActiveClass:' mui-active'	// 覆盖默认的路由高亮类 默认的类叫 router-link-active
