@@ -7,12 +7,11 @@ Vue.use(VueRouter);
 import Vuex from 'vuex'
 
 Vue.use(Vuex);
-
+// 启动时获取localStorage的数据
+var car = JSON.parse(localStorage.getItem('car') || '[]');
 var store = new Vuex.Store({
 	state:{
-		car:[	// 将购物车中的商品数据，用一个数组存储起来，在car数组中，存储一些商品的对象，{ id:商品id, count: 要购买的数量, price:商品的单价, selected: true }
-
-		]
+		car:car	// 将购物车中的商品数据，用一个数组存储起来，在car数组中，存储一些商品的对象，{ id:商品id, count: 要购买的数量, price:商品的单价, selected: true }
 	},
 	mutations:{
 		addToCar(state,goodsinfo){		// 加入购物车保存信息
@@ -28,7 +27,10 @@ var store = new Vuex.Store({
 			if(!flag){
 				this.state.car.push(goodsinfo);
 			}
+			// 当更新car之后，将car数组存储到本地的lcoalStorage 中
+			localStorage.setItem('car', JSON.stringify(state.car))
 		}
+
 	},
 	getters:{
 		// 相当于计算属性 也相当于 filters
@@ -65,7 +67,7 @@ import axios from 'axios'
 
 Vue.prototype.$axios = axios;
 
-import { Tab, Tabs, Lazyload, Card, Button, Tag, NoticeBar, NavBar } from 'vant';
+import { Tab, Tabs, Lazyload, Card, Button, Tag, NoticeBar, NavBar, Form, Switch, Stepper } from 'vant';
 import 'vant/lib/tab/style'
 import 'vant/lib/tabs/style'
 import 'vant/lib/card/style'
@@ -73,6 +75,9 @@ import 'vant/lib/button/style'
 import 'vant/lib/tag/style'
 import 'vant/lib/notice-bar/style'
 import 'vant/lib/nav-bar/style'
+import 'vant/lib/form/style'
+import 'vant/lib/switch/style'
+import 'vant/lib/stepper/style'
 Vue.use(NavBar);
 Vue.use(Tab);
 Vue.use(Tabs);
@@ -80,6 +85,9 @@ Vue.use(Button);
 Vue.use(Card);
 Vue.use(Tag);
 Vue.use(NoticeBar);
+Vue.use(Form);
+Vue.use(Switch);
+Vue.use(Stepper);
 Vue.use(Lazyload, {
 	lazyComponent: true,
 });
