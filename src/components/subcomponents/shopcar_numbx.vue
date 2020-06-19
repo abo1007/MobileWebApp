@@ -25,7 +25,5 @@
 </script>
 
 <style scoped>
-    .mui-numbox{height:100%;width:100%;}
-    #test{width:40%;padding:0;}
-    .mui-btn{width:30%;margin:0;padding:0;}
+
 </style>

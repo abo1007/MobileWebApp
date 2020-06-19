@@ -11,11 +11,11 @@
                         di=95da9f55589afab15f1d0e69bd3cbba5&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180801%2F22%2F1533134885-YsUzESCwqk.jpg">
                         <div class="info">
                             <p>IPhone 11 Pro Max 512GB</p>
-                            <p class="p2">
+                            <div class="p2">
                                 <span class="price">￥2499</span>
-                                <van-stepper v-model="value" input-width="45px" button-size="35px" id="num1"/>
+                                <num-box class="num"></num-box>
                                 <a href="">删除</a>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,6 +42,12 @@ export default {
             value:1
 		}
 	},
+    methods:{
+	  getGoodsList(){
+	      var car = this.$store.state.car;
+	      // this.$axios.get('')
+      }
+    },
     components:{
 	    'num-box':shopcar_numbx
     }
@@ -59,13 +65,16 @@ export default {
                 .mui-card-content-inner{
                     display:flex;
                     align-items: center;
+                    padding-left:10px;
                     img{
                         height:65px;
                         width:65px;
                     }
                     p{
+                        text-align:center;
                         font-size:16px;
                         color:#000;
+                        overflow:hidden;
                     }
                     .price{
                         color:#ff0000;
@@ -77,9 +86,10 @@ export default {
                         align-items:center;
                         height:30px;
                     }
-                    #num1{
-                        height:40px;
-
+                    .num{
+                        height:30px;
+                        width:125px;
+                        margin:0 5px;
                     }
                 }
             }
