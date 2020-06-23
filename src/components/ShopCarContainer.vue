@@ -3,16 +3,15 @@
         <van-nav-bar title="闲得慌 购物车" id="home-nav-title" />
 
         <div class="goods-list">
-            <div class="mui-card">
+            <div class="mui-card" v-for="item in goodslist" :key="item.id">
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner">
                         <van-switch v-model="checked" size="24px"/>
-                        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592495651223&
-                        di=95da9f55589afab15f1d0e69bd3cbba5&imgtype=0&src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20180801%2F22%2F1533134885-YsUzESCwqk.jpg">
+                        <img :src="item.imgurl">
                         <div class="info">
-                            <p>IPhone 11 Pro Max 512GB</p>
+                            <p>{{item.name}}</p>
                             <div class="p2">
-                                <span class="price">￥2499</span>
+                                <span class="price">￥{{item.price}}</span>
                                 <num-box class="num"></num-box>
                                 <a href="">删除</a>
                             </div>
@@ -39,17 +38,33 @@ export default {
 	data(){
 		return{
             checked: true,
-            value:1
+            goodslist:[]
 		}
 	},
     methods:{
 	  getGoodsList(){
-	      var car = this.$store.state.car;
-	      // this.$axios.get('')
+	      var idArr = [];
+	      this.$store.state.car.forEach(item => idArr.push(item.id));
+          // 如果购物车无数据则直接返回，不需要请求数据接口
+          if(idArr.length <= 0)return;
+
+	      this.$axios.get('/api/shopcardata/' + idArr.join(',')).then(result => {
+	          if (result.data.status === 0){
+                  // console.log(result);
+	              this.goodslist = result.data.message;
+              }else{
+	              Toast ('页面丢失了');
+              }
+          }).catch(err => {
+              console.log(err);
+          })
       }
     },
     components:{
 	    'num-box':shopcar_numbx
+    },
+    created(){
+	    this.getGoodsList();
     }
 }
 </script>
