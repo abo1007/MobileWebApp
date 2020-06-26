@@ -15,14 +15,15 @@
         },
         methods:{
             countChanged(){
-
+                // 每当数量变化，则将最新的数量同步到购物车的store中覆盖
+                this.$store.commit('updateGoodsInfo',{id:this.goodsid,count:this.$refs.numbox.value});
             }
         },
         mounted() {
             mui('.mui-numbox').numbox()
             console.log(this.initcount);
         },
-        props:['initcount']
+        props:['initcount','goodsid']
     }
 </script>
 

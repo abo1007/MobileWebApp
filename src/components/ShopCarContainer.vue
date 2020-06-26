@@ -12,7 +12,7 @@
                             <p>{{item.name}}</p>
                             <div class="p2">
                                 <span class="price">￥{{item.price}}</span>
-                                <num-box class="num" :initcount="$store.getters.getGoodsCount[item.id]"></num-box>
+                                <num-box class="num" :initcount="$store.getters.getGoodsCount[item.id]" :goodsid="item.id"></num-box>
                                 <a href="">删除</a>
                             </div>
                         </div>

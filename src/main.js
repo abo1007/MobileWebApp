@@ -29,8 +29,15 @@ var store = new Vuex.Store({
 			}
 			// 当更新car之后，将car数组存储到本地的lcoalStorage 中
 			localStorage.setItem('car', JSON.stringify(state.car))
+		},
+		updateGoodsInfo(state,goodsinfo){
+			state.car.some(item => {
+				if(item.id == goodsinfo.id){
+					item.count = parseInt(goodsinfo.count);
+					return true;
+				}
+			})
 		}
-
 	},
 	getters:{
 		// 相当于计算属性 也相当于 filters
