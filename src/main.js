@@ -37,6 +37,15 @@ var store = new Vuex.Store({
 					return true;
 				}
 			})
+		},
+		removeFormCar(state,id){
+			state.car.some((item,i) => {
+				if(item.id == id){
+					state.car.splice(i,1);
+				}
+			});
+			// 将最新数据保存到本地存储中
+			localStorage.setItem('car',JSON.stringify(state.car));
 		}
 	},
 	getters:{

@@ -3,17 +3,17 @@
         <van-nav-bar title="闲得慌 购物车" id="home-nav-title" />
 
         <div class="goods-list">
-            <div class="mui-card" v-for="item in goodslist" :key="item.id">
+            <div class="mui-card" v-for="(item,i) in goodslist" :key="item.id">
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner">
-                        <van-switch v-model="checked" size="24px"/>
+                        <van-switch v-model="checked[i]" size="24px"/>
                         <img :src="item.imgurl">
                         <div class="info">
                             <p>{{item.name}}</p>
                             <div class="p2">
                                 <span class="price">￥{{item.price}}</span>
-                                <num-box class="num" :initcount="$store.getters.getGoodsCount[item.id]" :goodsid="item.id"></num-box>
-                                <a href="">删除</a>
+                                <num-box class="num" :initcount="$store.getters.getGoodsCount[item.id]" :goodsid="item.id"/>
+                                <a href="" @click.prevent="removeGoods(item.id,i)">删除</a>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@ export default {
 	name:'ShopCarContainer',
 	data(){
 		return{
-            checked: true,
+            checked:[true], // 因为开关需要独立运作
             goodslist:[]
 		}
 	},
@@ -52,12 +52,22 @@ export default {
 	          if (result.data.status === 0){
                   // console.log(result);
 	              this.goodslist = result.data.message;
+
+	              for (let i = 0;i < result.data.message.length; i++){
+	                  this.checked[i] = true;
+                  }
+
               }else{
 	              Toast ('页面丢失了');
               }
           }).catch(err => {
               console.log(err);
           })
+      },
+      removeGoods(id,index){
+	      // 点击删除，把商品从 store中根据传递的id删除，同时把组件中goodslist中，对应要删除的那个商品，使用index删除
+          this.goodslist.splice(index,1);
+          this.$store.commit('removeFormCar',id);
       }
     },
     components:{
@@ -87,7 +97,7 @@ export default {
                     }
                     p{
                         text-align:center;
-                        font-size:16px;
+                        font-size:15px;
                         color:#000;
                         overflow:hidden;
                     }
@@ -95,11 +105,17 @@ export default {
                         color:#ff0000;
                         font-weight:bold;
                     }
+                    .info{
+                        width:65%;
+                    }
                     .p2{
                         display:flex;
                         justify-content:space-between;
                         align-items:center;
                         height:30px;
+                        a{
+                            font-size:13px;
+                        }
                     }
                     .num{
                         height:30px;
