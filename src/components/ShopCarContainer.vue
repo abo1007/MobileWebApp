@@ -23,8 +23,12 @@
 <!--结算区域-->
         <div class="mui-card">
             <div class="mui-card-content">
-                <div class="mui-card-content-inner">
-                    这是一个最简单的卡片视图控件；卡片视图常用来显示完整独立的一段信息，比如一篇文章的预览图、作者信息、点赞数量等
+                <div class="mui-card-content-inner" id="jiesuan">
+                    <div class="left">
+                        <p>总计 (不含运费)</p>
+                        <p>已勾选商品 <span class="red">0</span> 件，总价 ¥ <span class="red">0</span></p>
+                    </div>
+                    <van-button type="warning" round color="linear-gradient(to right,#C71585,#FFA500)">警告按钮</van-button>
                 </div>
             </div>
         </div>
@@ -122,6 +126,21 @@ export default {
                         width:125px;
                         margin:0 5px;
                     }
+                }
+            }
+        }
+    }
+    #jiesuan{
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        .left{
+            p{
+                font-size:16px;
+                letter-spacing:1px;
+                .red{
+                    color:#ff0000;
+                    font-weight:bold;
                 }
             }
         }
