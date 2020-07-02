@@ -6,7 +6,7 @@
             <div class="mui-card" v-for="(item,i) in goodslist" :key="item.id">
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner">
-                        <van-switch v-model="checked[i]" size="24px"/>
+                        <van-switch v-model="$store.getters.getGoodsSelected[item.id]" size="24px"/>
                         <img :src="item.imgurl">
                         <div class="info">
                             <p>{{item.name}}</p>
@@ -20,6 +20,7 @@
                 </div>
             </div>
         </div>
+<!--        <p>{{$store.getters.getGoodsSelected}}</p>-->
 <!--结算区域-->
         <div class="mui-card">
             <div class="mui-card-content">
@@ -41,7 +42,7 @@ export default {
 	name:'ShopCarContainer',
 	data(){
 		return{
-            checked:[true], // 因为开关需要独立运作
+            checked:[], // 因为开关需要独立运作
             goodslist:[]
 		}
 	},
@@ -57,9 +58,9 @@ export default {
                   // console.log(result);
 	              this.goodslist = result.data.message;
 
-	              for (let i = 0;i < result.data.message.length; i++){
-	                  this.checked[i] = true;
-                  }
+	              // for (let i = 0;i < result.data.message.length; i++){
+	              //     this.checked[i] = true;
+                  // }
 
               }else{
 	              Toast ('页面丢失了');
