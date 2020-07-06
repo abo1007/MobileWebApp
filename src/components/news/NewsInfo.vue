@@ -15,7 +15,7 @@
         </div>
         <div class="content">
             <p>
-                {{ newsinfo.zhaiyao }}
+                {{ newsinfo.content }}
             </p>
         </div>
         <comment-box :id="id"/>

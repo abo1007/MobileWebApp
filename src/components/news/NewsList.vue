@@ -66,20 +66,27 @@
     #app {
         margin-bottom: 50px;
     }
-    .mui-media-body {
-        .mui-table-body-p1 {
-            font-size: 16px;
-            color: #000000;
-            font-weight: 600;
-        }
-        .mui-ellipsis {
-            font-size: 13px;
-            display: flex;
-            justify-content: space-between;
-            span {
-                color: #228B22;
+    .mui-table-view-cell{
+        padding:10px 15px;
+        .mui-media-body {
+            .mui-table-body-p1 {
+                font-size: 18px;
+                color: #000000;
+                font-weight: 600;
+                font-family: 幼圆;
+            }
+            .mui-ellipsis {
+                font-size: 11px;
+                display: flex;
+                justify-content: space-between;
+                align-items:center;
+                span {
+                    color: #4d4d4d;
+                    font-weight:300;
+                }
             }
         }
     }
+
 
 </style>
