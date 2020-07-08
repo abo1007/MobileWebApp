@@ -6,7 +6,8 @@
             <div class="mui-card" v-for="(item,i) in goodslist" :key="item.id">
                 <div class="mui-card-content">
                     <div class="mui-card-content-inner">
-                        <van-switch v-model="$store.getters.getGoodsSelected[item.id]" size="24px"/>
+                        <van-switch v-model="checked[item.id]"
+                                    :click="SelectedChanged(item.id,checked[item.id])" size="24px"/>
                         <img :src="item.imgurl">
                         <div class="info">
                             <p>{{item.name}}</p>
@@ -42,8 +43,9 @@ export default {
 	name:'ShopCarContainer',
 	data(){
 		return{
-            checked:[], // 因为开关需要独立运作
-            goodslist:[]
+            checked:this.$store.getters.getGoodsSelected, // 因为开关需要独立运作
+            goodslist:[],
+
 		}
 	},
     methods:{
@@ -73,6 +75,11 @@ export default {
 	      // 点击删除，把商品从 store中根据传递的id删除，同时把组件中goodslist中，对应要删除的那个商品，使用index删除
           this.goodslist.splice(index,1);
           this.$store.commit('removeFormCar',id);
+      },
+      SelectedChanged(id, val){
+          // 每当点击开关，把最新的开关状态哦同步到store中
+          // console.log(id, val);
+          this.$store.commit('updateGoodsSelected',{id, selected: val})
       }
     },
     components:{

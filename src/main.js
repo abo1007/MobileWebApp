@@ -46,6 +46,14 @@ var store = new Vuex.Store({
 			});
 			// 将最新数据保存到本地存储中
 			localStorage.setItem('car',JSON.stringify(state.car));
+		},
+		updateGoodsSelected(state, info){
+			state.car.some(item => {
+				if(item.id == info.id){
+					item.selected = info.selected;
+				}
+			});
+			localStorage.setItem('car',JSON.stringify(state.car));
 		}
 	},
 	getters:{
