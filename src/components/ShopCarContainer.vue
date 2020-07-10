@@ -28,9 +28,9 @@
                 <div class="mui-card-content-inner" id="jiesuan">
                     <div class="left">
                         <p>总计 (不含运费)</p>
-                        <p>已勾选商品 <span class="red">0</span> 件，总价 ¥ <span class="red">0</span></p>
+                        <p>已勾选商品 <span class="red">{{$store.getters.getGoodsCountAndAmount.count}}</span> 件，总价 ¥ <span class="red">{{$store.getters.getGoodsCountAndAmount.amount}}</span></p>
                     </div>
-                    <van-button type="warning" round color="linear-gradient(to right,#C71585,#FFA500)">警告按钮</van-button>
+                    <van-button type="warning" round color="linear-gradient(to right,#C71585,#FFA500)">点击结算</van-button>
                 </div>
             </div>
         </div>
