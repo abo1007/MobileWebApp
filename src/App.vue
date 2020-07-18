@@ -51,9 +51,6 @@ export default {
 	.mui-bar{
 		z-index:99;
 	}
-	.mui-active{
-		transition:all 0.6s ease;
-	}
 	.v-enter{
 		opacity: 0;
 		transform: translateX(100%);
