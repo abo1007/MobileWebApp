@@ -107,7 +107,6 @@ import { Header, Swipe, SwipeItem} from 'mint-ui';
 Vue.component(Header.name,Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
-// Vue.component(Button.name, Button);
 
 import './lib/MUI/css/mui.min.css'
 import './lib/MUI/css/icons-extra.css'
@@ -115,10 +114,9 @@ import './lib/MUI/css/icons-extra.css'
 import router from './router/router.js'
 
 import axios from 'axios'
-
 Vue.prototype.$axios = axios;
 
-import { Tab, Tabs, Lazyload, Card, Button, Tag, NoticeBar, NavBar, Form, Switch, Stepper } from 'vant';
+import { Tab, Tabs, Lazyload, Card, Button, Tag, NoticeBar, NavBar, Form, Switch, Stepper, Icon } from 'vant';
 import 'vant/lib/tab/style'
 import 'vant/lib/tabs/style'
 import 'vant/lib/card/style'
@@ -129,6 +127,7 @@ import 'vant/lib/nav-bar/style'
 import 'vant/lib/form/style'
 import 'vant/lib/switch/style'
 import 'vant/lib/stepper/style'
+import 'vant/lib/icon/style'
 Vue.use(NavBar);
 Vue.use(Tab);
 Vue.use(Tabs);
@@ -139,6 +138,7 @@ Vue.use(NoticeBar);
 Vue.use(Form);
 Vue.use(Switch);
 Vue.use(Stepper);
+Vue.use(Icon);
 Vue.use(Lazyload, {
 	lazyComponent: true,
 });

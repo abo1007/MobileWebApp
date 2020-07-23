@@ -1,6 +1,5 @@
 <template>
     <div id="app-my">
-<!--        <van-nav-bar title="闲得慌 我" id="home-nav-title" />-->
         <div class="title">
             <span class="mui-icon mui-icon-gear-filled" @click="goSet"></span>
         </div>
@@ -13,7 +12,33 @@
                 <p class="id">ID : yhx000881
                     <span class="logo">VIP</span>
                 </p>
+            </div>
+        </div>
 
+        <div class="menu">
+            <div class="m1 mt">
+                <van-icon name="card" size="30px" color="#FFD700"/>
+                <p>钱包</p>
+            </div>
+            <div class="m2 mt">
+                <van-icon name="vip-card" size="30px" color="#008000"/>
+                <p>卡包</p>
+            </div>
+            <div class="m2 mt">
+                <van-icon name="browsing-history" size="30px" color="#BA55D3"/>
+                <p>历史</p>
+            </div>
+            <div class="m2 mt">
+                <van-icon name="point-gift" size="30px" color="#ff0000"/>
+                <p>收藏</p>
+            </div>
+            <div class="m2 mt">
+                <van-icon name="cart" size="30px" color="#2e9bed"/>
+                <p>购物车</p>
+            </div>
+            <div class="m1 mt">
+                <van-icon name="setting" size="30px" color="#000"/>
+                <p>设置</p>
             </div>
         </div>
 
@@ -42,6 +67,7 @@ export default {
 #app-my{
     margin-bottom:50px;
     height:100vh;
+    background-color: #eee;
     .title{
         width:100%;
         height:46px;
@@ -101,6 +127,31 @@ export default {
                 }
             }
 
+        }
+    }
+    .menu{
+        width:100%;
+        .m1{
+            margin:20px 10px;
+        }
+        .m2{
+            margin:5px 10px;
+        }
+        .mt{
+            height:40px;
+            background-color: #fff;
+
+            border-radius:15px;
+            display:flex;
+            align-items:center;
+            padding-left:20px;
+            p{
+                padding-left:20px;
+                margin:0;
+                font-size:22px;
+                color:#000;
+                font-weight:200;
+            }
         }
     }
 }
