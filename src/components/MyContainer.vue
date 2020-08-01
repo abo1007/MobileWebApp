@@ -16,27 +16,27 @@
         </div>
 
         <div class="menu">
-            <div class="m1 mt">
+            <div class="m1 mt" @click="goMenu(1)">
                 <van-icon name="card" size="30px" color="#FFD700"/>
                 <p>钱包</p>
             </div>
-            <div class="m2 mt">
+            <div class="m2 mt" @click="goMenu(2)">
                 <van-icon name="vip-card" size="30px" color="#008000"/>
                 <p>卡包</p>
             </div>
-            <div class="m2 mt">
+            <div class="m2 mt" @click="goMenu(3)">
                 <van-icon name="browsing-history" size="30px" color="#BA55D3"/>
                 <p>历史</p>
             </div>
-            <div class="m2 mt">
+            <div class="m2 mt" @click="goMenu(4)">
                 <van-icon name="point-gift" size="30px" color="#ff0000"/>
                 <p>收藏</p>
             </div>
-            <div class="m2 mt">
+            <div class="m2 mt" @click="goMenu(5)">
                 <van-icon name="cart" size="30px" color="#2e9bed"/>
                 <p>购物车</p>
             </div>
-            <div class="m1 mt">
+            <div class="m1 mt"  @click="goMenu(6)">
                 <van-icon name="setting" size="30px" color="#000"/>
                 <p>设置</p>
             </div>
@@ -57,7 +57,11 @@ export default {
     methods:{
 	    goSet(){
 	        Toast ('诶呦！还没写呢！')
+        },
+        goMenu(i){
+	        Toast('功能建设中。。。')
         }
+
     }
 
 }
@@ -126,7 +130,6 @@ export default {
                     border-radius:10px;
                 }
             }
-
         }
     }
     .menu{
@@ -140,7 +143,6 @@ export default {
         .mt{
             height:40px;
             background-color: #fff;
-
             border-radius:15px;
             display:flex;
             align-items:center;
