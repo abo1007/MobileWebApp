@@ -9,3 +9,5 @@
 1. 运行 `npm i` 安装依赖
 2. 准备好配套后端，将其后端服务运行
 3. 使用 `npm run dev` 运行
+
+### [简单的NodeJS后端配套](https://github.com/abo1007/MobileWebApp-Server)
