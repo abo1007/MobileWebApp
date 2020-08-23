@@ -6,23 +6,24 @@
                 left-arrow
                 @click-left="goHome()"
         />
-        <h3>没劲视频</h3>
         <div class="container">
-            <div class="item">
+            <div class="item" v-for="item in videoList" :key="item.id">
                 <div class="left">
-                    <img src="http://127.0.0.1:3008/api/public/images/video/peking.jpg" alt="">
+                    <img :src="item.url" alt="">
                 </div>
                 <div class="right">
                     <div class="title">
-                        [北京]守一座空城 等一个故人
+                        {{item.title}}
                     </div>
                     <div class="bottom">
                         <p class="author">
                             <van-icon name="info" size="18px"/>
-                            北漂指北</p>
+                            <span>{{item.author}}</span>
+                        </p>
                         <p class="num">
                             <van-icon name="play-circle" size="18px"/>
-                            24.4万
+<!--                            播放量过滤器-->
+                            <span>{{getPlaynum(item.playnum)}}</span>
                         </p>
                     </div>
                 </div>
@@ -45,14 +46,24 @@
             },
             getVideoList(){
                 this.$axios.get('/api/getvideolist/1').then(result => {
-                    if(result.status === 0){
-                        this.videoList = result.message;
+                    console.log(result);
+                    if(result.data.status === 0){
+                        this.videoList = result.data.message;
                     }else{
                         console.log("status故障")
                     }
                 }).catch(err => {
                     console.log(err);
                 });
+            },
+            getPlaynum(num){
+                if(num>10000){
+                    let w = parseInt(num/10000);
+                    let k = parseInt(num%10000/1000) ;
+                    return w + "." + k + " 万";
+                }else{
+                    return num;
+                }
             }
         },
         created() {
@@ -84,13 +95,19 @@
             .right{
                 flex:1.2;
                 .title{
-                    padding-top:3px;
+                    padding-top:5px;
+                    height:50px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
                 .bottom{
                     margin-top:6px;
                     p{margin:0;display:flex;align-items:center;}
-                    .author{}
-                    .num{}
+                    .author,.num{
+                        height:20px;
+                        line-height:20px;
+                        span{padding-left:5px;}
+                    }
                 }
             }
         }
