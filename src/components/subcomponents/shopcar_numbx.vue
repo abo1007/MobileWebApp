@@ -21,7 +21,7 @@
         },
         mounted() {
             mui('.mui-numbox').numbox()
-            console.log(this.initcount);
+            // console.log(this.initcount);
         },
         props:['initcount','goodsid']
     }

@@ -1,9 +1,9 @@
 <template>
     <div id="app-my">
-        <div class="title">
+        <div class="title" :class="titleClass">
             <span class="mui-icon mui-icon-gear-filled" @click="goSet"></span>
         </div>
-        <div class="user">
+        <div class="user" :class="titleClass">
             <div class="left">
                 <img src="http://127.0.0.1:3008/api/public/images/goods/004.jpg" alt="">
             </div>
@@ -36,7 +36,11 @@
                 <van-icon name="cart" size="30px" color="#2e9bed"/>
                 <p>购物车</p>
             </div>
-            <div class="m1 mt"  @click="goMenu(6)">
+            <div class="m2 mt" @click="goMenu(6)">
+                <van-icon name="smile" size="30px" color="#DB7093"/>
+                <p>变换主题</p>
+            </div>
+            <div class="m1 mt"  @click="goMenu(7)">
                 <van-icon name="setting" size="30px" color="#000"/>
                 <p>设置</p>
             </div>
@@ -51,7 +55,9 @@ export default {
 	name:'MyContainer',
 	data(){
 		return{
-
+            theme:0,
+            titleClass:'bgc-green',
+            ClassList:['bgc-blue','bgc-black','bgc-green']
 		}
 	},
     methods:{
@@ -59,7 +65,19 @@ export default {
 	        Toast ('诶呦！还没写呢！')
         },
         goMenu(i){
-	        Toast('功能建设中。。。')
+	        if(i === 6){
+                this.updateTheme();
+            }else {
+                Toast('功能建设中。。。')
+            }
+        },
+        updateTheme(){
+            this.titleClass = this.ClassList[this.theme];
+            if(this.theme === 2){
+                this.theme = 0;
+                return;
+            }
+            this.theme++;
         }
 
     }
@@ -72,14 +90,16 @@ export default {
     margin-bottom:50px;
     height:100vh;
     background-color: #eee;
+    /* 顶部title背景色 */
+    .bgc-blue{background-color:#2e9bed;.right{p{color:#eee;}}   span{color:#fff}}
+    .bgc-black{background-color:#000; .right{p{color:#ccc;}}  span{color:#eee}}
+    .bgc-green{background-color:#2E8B57; .right{p{color:#fff;}}  span{color:#fff}}
     .title{
         width:100%;
         height:46px;
-        background-color:#2e9bed;
         position:relative;
         span{
             font-size:30px;
-            color:#eee;
             position:absolute;
             right:10px;
             line-height:46px;
@@ -90,7 +110,6 @@ export default {
         display:flex;
         height:120px;
         padding:10px;
-        background-color:#2e9bed;
         .left{
             flex:3;
             position:relative;
@@ -111,14 +130,12 @@ export default {
                 height:30px;
             }
             .name{
-                color:#fff;
                 font-size:20px;
                 font-weight:500;
                 position:relative;
                 top:30px;
             }
             .id{
-                color:#fff;
                 font-weight:200;
                 position:relative;
                 top:15px;
@@ -150,9 +167,8 @@ export default {
             p{
                 padding-left:20px;
                 margin:0;
-                font-size:22px;
+                font-size:16px;
                 color:#000;
-                font-weight:200;
             }
         }
     }
