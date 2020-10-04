@@ -37,7 +37,7 @@
                 <p>购物车</p>
             </div>
             <div class="m2 mt" @click="goMenu(6)">
-                <van-icon name="smile" size="30px" color="#DB7093"/>
+                <van-icon name="smile" size="30px" :color="themeColor"/>
                 <p>变换主题</p>
             </div>
             <div class="m1 mt"  @click="goMenu(7)">
@@ -57,7 +57,9 @@ export default {
 		return{
             theme:0,
             titleClass:'bgc-green',
-            ClassList:['bgc-blue','bgc-black','bgc-green']
+            ClassList:['bgc-blue','bgc-black','bgc-green'],
+            themeColor:'#2E8B57',
+            faceColorList:['#2e9bed','#000','#2E8B57']
 		}
 	},
     methods:{
@@ -73,6 +75,7 @@ export default {
         },
         updateTheme(){
             this.titleClass = this.ClassList[this.theme];
+            this.themeColor = this.faceColorList[this.theme];
             if(this.theme === 2){
                 this.theme = 0;
                 return;
