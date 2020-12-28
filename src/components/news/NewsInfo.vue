@@ -36,7 +36,7 @@
         },
         methods: {
             getNewsInfo() {
-                this.$axios.get('' + this.id).then(result => {
+                this.$axios.get(this.$API.API_GET_NEWS_INFO + this.id).then(result => {
                     // console.log(result)
                     if (result.data.status === 0) {
                         this.newsinfo = result.data.message

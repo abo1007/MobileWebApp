@@ -45,8 +45,8 @@
                 this.$router.push('/home')
             },
             getVideoList(){
-                this.$axios.get('/api/getvideolist/1').then(result => {
-                    console.log(result);
+                this.$axios.get(this.$API.API_GET_VIDEO_LIST).then(result => {
+                    // console.log(result);
                     if(result.data.status === 0){
                         this.videoList = result.data.message;
                     }else{

@@ -37,7 +37,7 @@
         },
         methods:{
             getAllClass() {     // 获取图片分类
-                this.$axios.get('/api/getimgclass').then(result => {
+                this.$axios.get(this.$API.API_GET_PHOTO_CLASS).then(result => {
                     // console.log(result);
                     if(result.data.status === 0) {
                         // 手动拼接处一个完整的分类列表
@@ -49,7 +49,7 @@
                 })
             },
             getAllPhotoInfo() {
-                this.$axios.get('/api/getimages/').then(result => {
+                this.$axios.get(this.$API.API_GET_PHOTO_LIST).then(result => {
                     // console.log(result)
                     if(result.data.status === 0) {
                         this.photoInfo = result.data.message;

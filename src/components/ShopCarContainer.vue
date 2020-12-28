@@ -56,7 +56,7 @@ export default {
           // 如果购物车无数据则直接返回，不需要请求数据接口
           if(idArr.length <= 0)return;
 
-	      this.$axios.get('/api/shopcardata/' + idArr.join(',')).then(result => {
+	      this.$axios.get(this.$API.API_GET_SHOPCAR + idArr.join(',')).then(result => {
 	          if (result.data.status === 0){
                   // console.log(result);
 	              this.goodslist = result.data.message;

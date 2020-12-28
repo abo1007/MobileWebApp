@@ -147,21 +147,21 @@ import utilAPI from "./util/utilAPI";
 Vue.prototype.$API = utilAPI;
 
 // 设置全局请求头
-const url='http://127.0.0.1:3008';
-axios.interceptors.request.use(
-	config => {
-		let token = localStorage.getItem("x-auth-token");
-		if (token) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
-			config.headers.token = `${token}`;
-		}
-		if (config.url.indexOf(url) === -1) {
-			config.url = url + config.url;/*拼接完整请求路径*/
-		}
-		return config;
-	},
-	err => {
-		return Promise.reject(err);
-	});
+// const url='http://127.0.0.1:3008';
+// axios.interceptors.request.use(
+// 	config => {
+// 		let token = localStorage.getItem("x-auth-token");
+// 		if (token) {  // 判断是否存在token，如果存在的话，则每个http header都加上token
+// 			config.headers.token = `${token}`;
+// 		}
+// 		if (config.url.indexOf(url) === -1) {
+// 			config.url = url + config.url;/*拼接完整请求路径*/
+// 		}
+// 		return config;
+// 	},
+// 	err => {
+// 		return Promise.reject(err);
+// 	});
 
 router.beforeEach((to, from, next) => {
 	/* 路由发生变化修改页面title */

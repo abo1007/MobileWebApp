@@ -106,7 +106,7 @@ export default {
 	},
 	methods:{
 		getSwipe() {
-			this.$axios.get('/api/getswipe').then(result => {
+			this.$axios.get(this.$API.API_GET_SWIPE).then(result => {
 				// console.log(result)
 				this.swipeList = result.data
 			}).catch(err => {

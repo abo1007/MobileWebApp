@@ -34,7 +34,7 @@
         },
         methods:{
             getPhotoInfo() {
-                this.$axios.get('/api/getimginfo/' + this.id).then(result => {
+                this.$axios.get(this.$API.API_GET_PHOTO_INFO + this.id).then(result => {
                     // console.log(result);
                     if(result.data.status === 0){
                         this.photoinfo = result.data.message
