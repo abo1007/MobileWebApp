@@ -55,7 +55,7 @@
         },
         methods:{
             getGoodsList(){
-                this.$axios.get('/api/getgoodslist?pageindex='+ this.pageindex).then(result => {
+                this.$axios.get(this.$API.API_GET_GOODS_LIST + this.pageindex).then(result => {
                     // console.log(result)
                     if (result.data.status === 0){
                         this.goodslist =this.goodslist.concat(result.data.message)

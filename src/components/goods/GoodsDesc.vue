@@ -27,7 +27,7 @@
         },
         methods:{
             getGoodsDesc(){
-                this.$axios.get('/api/getdesc/' + this.id ).then(result => {
+                this.$axios.get( this.$API.API_GET_GOODS_DESC + this.id ).then(result => {
                     if (result.data.status === 0) {
                         this.info = result.data.message
                     } else {

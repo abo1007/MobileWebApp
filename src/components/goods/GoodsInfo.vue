@@ -74,7 +74,7 @@
         },
         methods:{
             getgoodsinfo(){
-                this.$axios.get('/api/getgoods?id=' + this.id).then(result => {
+                this.$axios.get(this.$API.API_GET_GOODS_INFO + '?id=' + this.id).then(result => {
                     if (result.data.status === 0) {
                         // console.log(result);
                         this.goodsInfoData = result.data.message

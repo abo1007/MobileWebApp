@@ -35,7 +35,7 @@
         },
         methods:{
             getfeedbackContent(){
-              this.$axios.get('/api/getfeedback').then(result => {
+              this.$axios.get(this.$API.API_GET_FEEDBACK).then(result => {
                   if (result.data.status === 0) {
                       this.feedbackContent = result.data.message
                   }else{
@@ -52,7 +52,7 @@
                 this.$router.push('/home')
             },
             sendFeedbackContent(){
-                this.$axios.post('/api/submitfeedback',{
+                this.$axios.post(this.$API.API_SEND_FEEDBACK,{
                     content:this.feedbackSendContent
                 }).then(result => {
                     if (result.data.status === 0) {

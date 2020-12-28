@@ -143,6 +143,9 @@ Vue.use(Lazyload, {
 	lazyComponent: true,
 });
 
+import utilAPI from "./util/utilAPI";
+Vue.prototype.$API = utilAPI;
+
 // 设置全局请求头
 const url='http://127.0.0.1:3008';
 axios.interceptors.request.use(
