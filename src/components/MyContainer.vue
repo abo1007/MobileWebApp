@@ -56,7 +56,7 @@ export default {
 	data(){
 		return{
             theme:0,
-            titleClass:'bgc-green',
+            titleClass:'bgc-blue',
             ClassList:['bgc-blue','bgc-black','bgc-green']
 		}
 	},
@@ -72,14 +72,28 @@ export default {
             }
         },
         updateTheme(){
-            this.titleClass = this.ClassList[this.theme];
-            if(this.theme === 2){
+            if(this.theme === this.ClassList.length-1){
                 this.theme = 0;
-                return;
+            }else{
+                this.theme++;
             }
-            this.theme++;
+            this.titleClass = this.ClassList[this.theme];
+        },
+        setTheme(){     // 本地存储
+            let the = Number(localStorage.getItem("AppTheme"));
+            if(the){
+                this.theme = the;
+                this.titleClass = this.ClassList[this.theme];
+            }
         }
-
+    },
+    watch:{
+	    theme:function(){
+            localStorage.setItem("AppTheme",this.theme);
+        }
+    },
+    created() {
+        this.setTheme();
     }
 
 }

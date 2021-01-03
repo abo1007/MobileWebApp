@@ -6,6 +6,10 @@
 				<img :src="item.img" alt="">
 			</mt-swipe-item>
 		</mt-swipe>
+		<van-notice-bar
+				left-icon="volume-o"
+				text="值得庆幸的是，博主终于想起来了他还有个烂尾的项目。"
+		/>
 		<ul class="mui-table-view mui-grid-view mui-grid-9">
 			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 				<router-link to="/home/newslist">
